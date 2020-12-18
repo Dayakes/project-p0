@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using PizzaWorld.Domain.Models;
 using PizzaWorld.Domain.Singletons;
 
@@ -10,9 +10,7 @@ namespace PizzaWorld.Client
         private static readonly ClientSingleton _client = ClientSingleton.Instance;
         static void Main(string[] args)
         {
-            //_client.MakeStore();
-
-            PrintAllStores();
+            UserView();
         }
 
         static IEnumerable<Store> GetAllStores()
@@ -26,6 +24,19 @@ namespace PizzaWorld.Client
             {
                 System.Console.WriteLine(store);
             }
+        }
+        static void UserView()
+        {
+            var user = new User();
+
+            PrintAllStores();
+
+            user.SelectedStore = _client.SelectStore();
+            user.SelectedStore.CreateOrder();
+            user.Orders.Add(user.SelectedStore.Orders.Last());
+
+            System.Console.WriteLine(user.ToString());
+
         }
     }
 }

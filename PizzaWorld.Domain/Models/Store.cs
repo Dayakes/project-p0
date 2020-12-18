@@ -15,7 +15,6 @@ namespace PizzaWorld.Domain.Models
             try
             {
                 Orders.Remove(order);
-
                 return true;
             }
             catch
@@ -24,7 +23,6 @@ namespace PizzaWorld.Domain.Models
             }
             finally
             {
-                //GarbageCollection
                 GC.Collect();
             }
             

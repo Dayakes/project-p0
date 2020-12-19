@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
 {
@@ -10,11 +13,24 @@ namespace PizzaWorld.Domain.Models
         [required] must be able to only order once every 2-hour period
         */
         public List<Order> Orders {get; set;}
+        public List<APizzaModel> SelectedPizzas {get; set;}
         public Store SelectedStore { get; set; }
+        
+
+        public User()
+        {
+            Orders = new List<Order>();
+        }
         
         public override string ToString()
         {
-            return $"I have selected this store: {SelectedStore}"; //string interpolation using the $
+            var sb = new StringBuilder();
+
+            foreach(var p in Orders.Last().Pizzas)
+            {
+                sb.AppendLine(p.ToString());
+            }
+            return $"You have selected this store: {SelectedStore} and ordered these pizzas: {sb.ToString()}"; //string interpolation using the $
         }
     }
 }

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
 {
-    public class Pizza
+    public class CustomPizza : APizzaModel
     {
         /*
         [required] each pizza must be able to have a crust

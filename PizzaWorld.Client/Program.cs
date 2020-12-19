@@ -32,8 +32,15 @@ namespace PizzaWorld.Client
             PrintAllStores();
 
             user.SelectedStore = _client.SelectStore();
+            user.SelectedPizzas = _client.SelectPizzas();
             user.SelectedStore.CreateOrder();
             user.Orders.Add(user.SelectedStore.Orders.Last());
+            // while user.SelectPizza() get all pizzas from the user and then close loop and create order
+            /*
+            user.Orders.Last().MakeMeatPizza();
+            user.Orders.Last().MakeVeggiePizza();
+            user.Orders.Last().MakeFlatbreadPizza();
+            */
 
             System.Console.WriteLine(user.ToString());
 

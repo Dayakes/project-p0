@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using PizzaWorld.Domain.Abstracts;
 using PizzaWorld.Domain.Models;
 
 namespace PizzaWorld.Domain.Singletons
@@ -57,6 +58,14 @@ namespace PizzaWorld.Domain.Singletons
             //Stores.FirstOrDefault(s => s == input); //unique property, custoemr entered correct information     wants us to use this
             return Stores.ElementAtOrDefault(input);
             //Stores[input]; //exception
+        }
+        public List<APizzaModel> SelectPizzas()
+        {
+            bool Leave = false;
+            while(Leave == false)
+            {
+                System.Console.WriteLine("Select a pizza, enter 9 to finish selecting");
+            }
         }
 
         private void Save()

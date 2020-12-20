@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using PizzaWorld.Domain.Abstracts;
+using PizzaWorld.Domain.Factories;
 using PizzaWorld.Domain.Models;
 
 namespace PizzaWorld.Domain.Singletons
@@ -62,9 +63,37 @@ namespace PizzaWorld.Domain.Singletons
         public List<APizzaModel> SelectPizzas()
         {
             bool Leave = false;
+            List<APizzaModel> Pizzas = new List<APizzaModel>();
+            APizzaModel test = new MeatPizza();
+            GenericPizzaFactory _factory = new GenericPizzaFactory();
             while(Leave == false)
             {
+                test.PrintAllPizzas();
                 System.Console.WriteLine("Select a pizza, enter 9 to finish selecting");
+                int.TryParse(Console.ReadLine(), out int input);
+                input--;
+                switch(input)
+                {
+                    case 1:
+                    {   
+                        Pizzas.Add(_factory.Make<MeatPizza>());
+                        break;
+                    }
+                    case 2:
+                    {
+                        Pizzas.Add(_factory.Make<VeggiePizza>());
+                        break;
+                    }
+                    case 3:
+                    {
+                        Pizzas.Add(_factory.Make<FlatbreadPizza>());
+                        break;
+                    }
+                    case 9:
+                    {
+                        return Pizzas;
+                    }
+                }
             }
         }
 

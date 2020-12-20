@@ -18,7 +18,7 @@ namespace PizzaWorld.Domain.Abstracts
         protected virtual void AddSize(){}
         protected virtual void AddToppings(){}
         protected virtual void SetPrice(){}
-        protected void PrintAllPizzas()
+        public void PrintAllPizzas()
         {
             System.Console.WriteLine("Meat Pizza /nVeggie Pizza/nFlatbread Pizza"); //this will require testing
         }

@@ -62,39 +62,57 @@ namespace PizzaWorld.Domain.Singletons
         }
         public List<APizzaModel> SelectPizzas()
         {
-            bool Leave = false;
+            bool Leave = true;
             List<APizzaModel> Pizzas = new List<APizzaModel>();
             APizzaModel test = new MeatPizza();
             GenericPizzaFactory _factory = new GenericPizzaFactory();
-            while(Leave == false)
+
+            do
             {
+                Console.WriteLine(Leave);
                 test.PrintAllPizzas();
                 System.Console.WriteLine("Select a pizza, enter 9 to finish selecting");
                 int.TryParse(Console.ReadLine(), out int input);
-                input--;
-                switch(input)
+                //input--; may need to decrement input
+                switch (input)
                 {
                     case 1:
-                    {   
-                        Pizzas.Add(_factory.Make<MeatPizza>());
-                        break;
-                    }
+                        {
+                            Pizzas.Add(_factory.Make<MeatPizza>());
+                            Console.WriteLine(_factory.Make<MeatPizza>()); //for testing
+                            break;
+                        }
                     case 2:
-                    {
-                        Pizzas.Add(_factory.Make<VeggiePizza>());
-                        break;
-                    }
+                        {
+                            Pizzas.Add(_factory.Make<VeggiePizza>());
+                            Console.WriteLine(_factory.Make<VeggiePizza>()); //for testing
+                            break;
+                        }
                     case 3:
-                    {
-                        Pizzas.Add(_factory.Make<FlatbreadPizza>());
-                        break;
-                    }
+                        {
+                            Pizzas.Add(_factory.Make<FlatbreadPizza>());
+                            Console.WriteLine(_factory.Make<FlatbreadPizza>()); //for testing
+                            break;
+                        }
                     case 9:
-                    {
-                        return Pizzas;
-                    }
+                        {
+                            Leave = false;
+                            Console.WriteLine(Leave); //for testing
+                            Console.WriteLine(input); //for testing
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Please enter a valid choice");
+                            break;
+                        }
+
+
+
                 }
-            }
+
+            } while (Leave);
+            return Pizzas;
         }
 
         private void Save()

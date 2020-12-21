@@ -26,7 +26,7 @@ namespace PizzaWorld.Domain.Models
         {
             var sb = new StringBuilder();
 
-            foreach(var p in Orders.Last().Pizzas)
+            foreach(var p in SelectedPizzas)
             {
                 sb.AppendLine(p.ToString());
             }

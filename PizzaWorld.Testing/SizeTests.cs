@@ -20,6 +20,6 @@ namespace PizzaWorld.Testing
             Assert.IsType<Size>(actual);
             Assert.NotNull(actual);
         }
-        private void Test_
+        //private void Test_
     }
 }

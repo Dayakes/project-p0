@@ -9,7 +9,7 @@ public class PizzaWorldContext : DbContext
     public DbSet<APizzaModel> Pizzas { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-        builder.UseSqlServer("Server=darrenpizzaworldp0.database.windows.net;Initial Catalog=PizzaWorldDb;User ID=sqladmin;Password=Krimson!;");
+        builder.UseSqlServer("Server=darrenpizzaworldp0.database.windows.net;Initial Catalog=PizzaWorldDb;User ID=sqladmin;Password={yourpassword};");
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

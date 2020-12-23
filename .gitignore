@@ -1,4 +1,3 @@
 # dotnet USE COMMAND dotnet new gitignore FOR REAL PROJECTS
 bin/
 obj/
-.vscode/

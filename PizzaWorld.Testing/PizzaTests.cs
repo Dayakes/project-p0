@@ -9,11 +9,11 @@ namespace PizzaWorld.Testing
         [Fact]
         private void Test_PizzaExists()
         {
-            var sut = new CustomPizza();
+            var sut = new MeatPizza();
 
             var actual = sut;
 
-            Assert.IsType<CustomPizza>(actual);
+            Assert.IsType<MeatPizza>(actual);
             Assert.NotNull(actual);
         }
     }

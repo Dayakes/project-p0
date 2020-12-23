@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaWorld.Domain", "PizzaW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaWorld.Testing", "PizzaWorld.Testing\PizzaWorld.Testing.csproj", "{BEE83A8F-D843-4806-B69C-B27E28036089}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaWorld.Storing", "PizzaWorld.Storing\PizzaWorld.Storing.csproj", "{AFFED134-90F2-4A6B-8223-FBA62950DDD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{BEE83A8F-D843-4806-B69C-B27E28036089}.Release|x64.Build.0 = Release|Any CPU
 		{BEE83A8F-D843-4806-B69C-B27E28036089}.Release|x86.ActiveCfg = Release|Any CPU
 		{BEE83A8F-D843-4806-B69C-B27E28036089}.Release|x86.Build.0 = Release|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Debug|x64.Build.0 = Debug|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Debug|x86.Build.0 = Debug|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Release|x64.ActiveCfg = Release|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Release|x64.Build.0 = Release|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Release|x86.ActiveCfg = Release|Any CPU
+		{AFFED134-90F2-4A6B-8223-FBA62950DDD6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

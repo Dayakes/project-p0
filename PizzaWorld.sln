@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaWorld.Client", "PizzaWorld.Client\PizzaWorld.Client.csproj", "{C8BC9F15-6EF9-46BF-875C-95D6D38B24EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaWorld.Client", "PizzaWorld.Client\PizzaWorld.Client.csproj", "{C8BC9F15-6EF9-46BF-875C-95D6D38B24EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaWorld.Domain", "PizzaWorld.Domain\PizzaWorld.Domain.csproj", "{69844B12-9E77-489C-B2FD-DA48FFC5BAEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaWorld.Domain", "PizzaWorld.Domain\PizzaWorld.Domain.csproj", "{69844B12-9E77-489C-B2FD-DA48FFC5BAEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaWorld.Testing", "PizzaWorld.Testing\PizzaWorld.Testing.csproj", "{BEE83A8F-D843-4806-B69C-B27E28036089}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaWorld.Testing", "PizzaWorld.Testing\PizzaWorld.Testing.csproj", "{BEE83A8F-D843-4806-B69C-B27E28036089}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaWorld.Storing", "PizzaWorld.Storing\PizzaWorld.Storing.csproj", "{11384747-BAFA-4CDC-BFEE-FF0265C19D43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C8BC9F15-6EF9-46BF-875C-95D6D38B24EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +57,23 @@ Global
 		{BEE83A8F-D843-4806-B69C-B27E28036089}.Release|x64.Build.0 = Release|Any CPU
 		{BEE83A8F-D843-4806-B69C-B27E28036089}.Release|x86.ActiveCfg = Release|Any CPU
 		{BEE83A8F-D843-4806-B69C-B27E28036089}.Release|x86.Build.0 = Release|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Debug|x64.Build.0 = Debug|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Debug|x86.Build.0 = Debug|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Release|x64.ActiveCfg = Release|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Release|x64.Build.0 = Release|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Release|x86.ActiveCfg = Release|Any CPU
+		{11384747-BAFA-4CDC-BFEE-FF0265C19D43}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79EF4A1A-69B7-41C2-8AEB-D5E0BF9BBB12}
 	EndGlobalSection
 EndGlobal

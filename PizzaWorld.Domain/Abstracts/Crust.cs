@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PizzaWorld.Domain.Models
+namespace PizzaWorld.Domain.Abstracts
 {
-    public class Crust
+    public class Crust : AEntity
     {//I CAN DO THIS BY MAKING A FACTORY AND MAKING THEM THEIR OWN CLASSES
         private int crust;
         private double price;

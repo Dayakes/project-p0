@@ -4,7 +4,7 @@ using PizzaWorld.Domain.Factories;
 
 namespace PizzaWorld.Domain.Models
 {
-    public class Order
+    public class Order : AEntity
     {
         /*
         [required] each order must be able to view/list/edit its collection of pizzas

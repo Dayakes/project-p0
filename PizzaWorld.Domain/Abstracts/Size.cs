@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PizzaWorld.Domain.Abstracts;
 
-namespace PizzaWorld.Domain.Models
+namespace PizzaWorld.Domain.Abstracts
 {
-    public class Size
+    public class Size :AEntity
     {
         private int size;
         private double price;

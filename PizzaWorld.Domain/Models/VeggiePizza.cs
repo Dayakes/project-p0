@@ -10,23 +10,16 @@ namespace PizzaWorld.Domain.Models
         private List<Topping> toppings;
         protected override void AddCrust()
         {
-            Crust = "regular";
+            
         }
 
         protected override void AddSize()
         {
-            Size = "medium";
+            
         }
 
         protected override void AddToppings()
         {
-            Toppings = new List<string>
-      {
-        "cheese",
-        "tomato",
-        "peppers",
-        "onion"
-      };
         }
     }
 }

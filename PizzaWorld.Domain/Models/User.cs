@@ -5,7 +5,7 @@ using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
 {
-    public class User
+    public class User : AEntity
     {
         /*
         [required] must be able to view/list its order history

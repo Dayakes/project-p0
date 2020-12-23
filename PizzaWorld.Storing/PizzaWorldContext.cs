@@ -7,4 +7,19 @@ public class PizzaWorldContext : DbContext
     public DbSet<Store> Stores { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<APizzaModel> Pizzas { get; set; }
+    protected override void OnConfiguring(DbContextOptionsBuilder builder)
+    {
+        builder.UseSqlServer("Server=darrenpizzaworldp0.database.windows.net;Initial Catalog=PizzaWorldDb;User ID=sqladmin;Password=Krimson!;");
+    }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<Store>().HasKey(s => s.EntityId);
+        builder.Entity<User>().HasKey(u => u.EntityId);
+        builder.Entity<APizzaModel>().HasKey(p => p.EntityId);
+        builder.Entity<Crust>().HasKey(c => c.EntityId);
+        builder.Entity<Order>().HasKey(o => o.EntityId);
+        builder.Entity<Size>().HasKey(si => si.EntityId);
+        builder.Entity<Topping>().HasKey(t => t.EntityId);
+    }
 }

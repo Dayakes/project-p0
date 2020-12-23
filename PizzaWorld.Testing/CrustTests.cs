@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using PizzaWorld.Domain.Models;
+using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Testing
 {

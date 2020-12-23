@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Text;
+using PizzaWorld.Domain.Models;
 
 namespace PizzaWorld.Domain.Abstracts
 {
-    public abstract class APizzaModel
+    public abstract class APizzaModel : AEntity
     {
-        public string Crust {get; set;}
-        public string Size {get; set;}
-        public List<string> Toppings {get; set;}
+        public Crust crust {get; set;}
+        public Size size {get; set;}
+        public List<Topping> Toppings {get; set;}
         protected APizzaModel()
         {
             AddCrust();
@@ -31,7 +32,7 @@ namespace PizzaWorld.Domain.Abstracts
                 sb.AppendLine(t.ToString());
             }
 
-            return $"This is a {Crust} pizza:\nSize: {Size}\nToppings: {sb.ToString()}";
+            return $"This is a {crust.ToString()} pizza:\nSize: {size.ToString()}\nToppings: {sb.ToString()}";
         }
 
     }

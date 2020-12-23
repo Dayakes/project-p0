@@ -9,7 +9,7 @@ public class PizzaWorldContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-        builder.UseSqlServer("Server=darrenpizzaworldp0.database.windows.net;Initial Catalog=PizzaWorldDb;User ID=sqladmin;Password=password;");
+        builder.UseSqlServer("Server=darrenpizzaworldp0.database.windows.net;Initial Catalog=PizzaWorldDb;User ID=sqladmin;Password=;");
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

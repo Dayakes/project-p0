@@ -6,6 +6,7 @@ namespace PizzaWorld.Domain.Models
 {
     public class Store : AEntity
     {
+        private string Name;
 
         public List<Order> Orders {get; set;}
         public void CreateOrder()

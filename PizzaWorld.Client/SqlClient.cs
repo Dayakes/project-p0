@@ -26,7 +26,9 @@ namespace PizzaWorld.Client
         }
         public void CreateStore()
         {
-            Save(new Store());
+            private Store store = new Store();
+            store.name = "banana";
+            Save(store);
         }
     }
 }

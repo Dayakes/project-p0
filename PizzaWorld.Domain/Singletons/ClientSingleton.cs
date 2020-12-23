@@ -30,7 +30,8 @@ namespace PizzaWorld.Domain.Singletons
         public List<APizzaModel> Pizzas { get; set; }        
         private ClientSingleton() //constructor
         {
-            Read();
+            Stores = new List<Store>();
+            //Read();
             //GetToppings();
         }
 
@@ -57,7 +58,6 @@ namespace PizzaWorld.Domain.Singletons
         public Store SelectStore()
         {
             int.TryParse(Console.ReadLine(), out int input); // 0 or the actual selection
-            Console.WriteLine(input);
             //Stores.FirstOrDefault(s => s == input); //unique property, custoemr entered correct information     wants us to use this
             return Stores.ElementAtOrDefault(input);
             //Stores[input]; //exception

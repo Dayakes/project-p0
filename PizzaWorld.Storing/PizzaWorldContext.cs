@@ -6,10 +6,10 @@ public class PizzaWorldContext : DbContext
 {
     public DbSet<Store> Stores { get; set; }
     public DbSet<User> Users { get; set; }
-    public DbSet<APizzaModel> Pizzas { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-        builder.UseSqlServer("Server=darrenpizzaworldp0.database.windows.net;Initial Catalog=PizzaWorldDb;User ID=sqladmin;Password={yourpassword};");
+        builder.UseSqlServer("Server=darrenpizzaworldp0.database.windows.net;Initial Catalog=PizzaWorldDb;User ID=sqladmin;Password=password;");
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

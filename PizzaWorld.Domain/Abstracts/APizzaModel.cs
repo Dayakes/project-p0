@@ -4,7 +4,7 @@ using PizzaWorld.Domain.Models;
 
 namespace PizzaWorld.Domain.Abstracts
 {
-    public abstract class APizzaModel : AEntity
+    public class APizzaModel : AEntity
     {
         public Crust crust {get; set;}
         public Size size {get; set;}

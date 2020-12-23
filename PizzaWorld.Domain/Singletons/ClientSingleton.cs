@@ -27,19 +27,20 @@ namespace PizzaWorld.Domain.Singletons
         }
         //using STORES
         public List<Store> Stores { get; set; }
+        public List<APizzaModel> Pizzas { get; set; }        
         private ClientSingleton() //constructor
         {
             Read();
             //GetToppings();
         }
 
-        public void MakeStore()
+        /*public void MakeStore()
         {
             Stores.Add(new Store());
             Save();
         }
 
-        /*public bool TryParse2(string y,out int x)
+        public bool TryParse2(string y,out int x)
         {
             x = 0;
             try
@@ -56,6 +57,7 @@ namespace PizzaWorld.Domain.Singletons
         public Store SelectStore()
         {
             int.TryParse(Console.ReadLine(), out int input); // 0 or the actual selection
+            Console.WriteLine(input);
             //Stores.FirstOrDefault(s => s == input); //unique property, custoemr entered correct information     wants us to use this
             return Stores.ElementAtOrDefault(input);
             //Stores[input]; //exception

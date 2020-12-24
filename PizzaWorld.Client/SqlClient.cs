@@ -29,6 +29,7 @@ namespace PizzaWorld.Client
         }
         public void Update(Store store)
         {
+            //_db.Add(store);
             _db.SaveChanges();
         }
         public Store SelectStore()

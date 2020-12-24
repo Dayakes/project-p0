@@ -23,17 +23,17 @@ namespace PizzaWorld.Domain.Models
         {
             Pizzas = pizzas;
         }
-        public void MakeMeatPizza()
-        {
-            Pizzas.Add(_pizzaFactory.Make<MeatPizza>());
-        }
-        public void MakeVeggiePizza()
-        {
-            Pizzas.Add(_pizzaFactory.Make<VeggiePizza>());
-        }
-        public void MakeFlatbreadPizza()
-        {
-            Pizzas.Add(_pizzaFactory.Make<FlatbreadPizza>());
-        }
+        // public void MakeMeatPizza()
+        // {
+        //     Pizzas.Add(_pizzaFactory.Make<MeatPizza>());
+        // }
+        // public void MakeVeggiePizza()
+        // {
+        //     Pizzas.Add(_pizzaFactory.Make<VeggiePizza>());
+        // }
+        // public void MakeFlatbreadPizza()
+        // {
+        //     Pizzas.Add(_pizzaFactory.Make<FlatbreadPizza>());
+        // }
     }
 }

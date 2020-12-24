@@ -19,6 +19,10 @@ namespace PizzaWorld.Client
         {
             return _db.Stores;
         }
+        public Store ReadOne(string name)
+        {
+            return _db.Stores.FirstOrDefault(s => s.Name == name);
+        }
         public void Save(Store store)
         {
             _db.Add(store);
@@ -27,7 +31,7 @@ namespace PizzaWorld.Client
         public void CreateStore()
         {
             Store store = new Store();
-            store.name = "banana";
+            store.Name = "Dominos";
             Save(store);
 
         }

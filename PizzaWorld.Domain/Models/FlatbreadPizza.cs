@@ -3,24 +3,35 @@ using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
 {
-  public class FlatbreadPizza : APizzaModel
-  {
+    public class FlatbreadPizza : APizzaModel
+    {
         private Crust crust;
         private Size size;
         private List<Topping> toppings;
-    protected void AddCrust()
-    {
+        public FlatbreadPizza()
+        {
+          AddCrust();
+          AddSize();
+          AddToppings();
+        }
 
+        protected void AddCrust()
+        {
+          this.crust = new Crust("flatbread");
+        }
+
+        protected void AddSize()
+        {
+          this.size = new Size("medium");
+        }
+
+        protected void AddToppings()
+        {
+          this.toppings = new List<Topping>(){
+            new Topping("cheese"),
+            new Topping("peppers"),
+            new Topping("olives")
+          };
+        }
     }
-
-    protected void AddSize()
-    {
-
-    }
-
-    protected void AddToppings()
-    {
-      
-    }
-  }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
@@ -11,8 +12,22 @@ namespace PizzaWorld.Domain.Models
         public double price;
         public VeggiePizza()
         {
+            AddCrust();
+            AddSize();
+            AddToppings();
+        }
+        protected override void AddCrust()
+        {
             this.crust = new Crust("regular");
+        }
+
+        protected override void AddSize()
+        {
             this.size = new Size("medium");
+        }
+
+        protected override void AddToppings()
+        {
             this.toppings = new List<Topping>(){
                 new Topping("cheese"),
                 new Topping("peppers"),
@@ -20,18 +35,14 @@ namespace PizzaWorld.Domain.Models
                 new Topping("olives")
             };
         }
-        protected override void AddCrust()
+        public override string ToString()
         {
-            
-        }
-
-        protected override void AddSize()
-        {
-            
-        }
-
-        protected override void AddToppings()
-        {
+            var sb = new StringBuilder();
+            foreach (var t in Toppings)
+            {
+                sb.AppendLine(t.Name);
+            }
+            return $"This is a {crust.Name} pizza:\nSize: {size.Name}\nToppings: {sb.ToString()}";
         }
     }
 }

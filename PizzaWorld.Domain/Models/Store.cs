@@ -9,9 +9,14 @@ namespace PizzaWorld.Domain.Models
         public string Name { get; set; }
 
         public List<Order> Orders { get; set; }
+        public Store()
+        {
+            Orders = new List<Order>();
+        }
         public void CreateOrder()
         {
             Orders.Add(new Order());
+            
         }
         bool DeleteOrder(Order order)
         {

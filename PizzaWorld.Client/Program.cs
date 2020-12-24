@@ -39,16 +39,18 @@ namespace PizzaWorld.Client
 
             PrintAllStoresWithEF();
 
-            user.SelectedStore = _client.SelectStore();
+            user.SelectedStore = _sql.SelectStore();
             user.SelectedPizzas = _client.SelectPizzas();
-            //user.SelectedStore.CreateOrder();
-            //user.Orders.Add(user.SelectedStore.Orders.Last());
+            user.SelectedStore.CreateOrder();
+            user.Orders.Add(user.SelectedStore.Orders.Last());
+
+            _sql.Update(user.SelectedStore); //update the store with the new order
+
             foreach (var p in user.SelectedPizzas)
             {
                 System.Console.WriteLine(p.ToString());
             }
-            // while user.SelectPizza() get all pizzas from the user and then close loop and create order
-
+            
             //user.Orders.Last().MakeMeatPizza();
             //user.Orders.Last().MakeVeggiePizza();
             //user.Orders.Last().MakeFlatbreadPizza();

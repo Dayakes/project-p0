@@ -31,29 +31,8 @@ namespace PizzaWorld.Domain.Singletons
         private ClientSingleton() //constructor
         {
             Stores = new List<Store>();
-            //Read();
-            //GetToppings();
-        }
 
-        /*public void MakeStore()
-        {
-            Stores.Add(new Store());
-            Save();
         }
-
-        public bool TryParse2(string y,out int x)
-        {
-            x = 0;
-            try
-            {
-               x =  int.Parse(y);
-               return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }*/
 
         public Store SelectStore()
         {

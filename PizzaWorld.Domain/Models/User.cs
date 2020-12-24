@@ -20,6 +20,8 @@ namespace PizzaWorld.Domain.Models
         public User()
         {
             Orders = new List<Order>();
+            SelectedPizzas = new List<APizzaModel>();
+            SelectedStore = new Store();
         }
         
         public override string ToString()

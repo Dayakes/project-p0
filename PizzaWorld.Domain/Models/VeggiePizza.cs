@@ -8,6 +8,18 @@ namespace PizzaWorld.Domain.Models
         private Crust crust;
         private Size size;
         private List<Topping> toppings;
+        public double price;
+        public VeggiePizza()
+        {
+            this.crust = new Crust("regular");
+            this.size = new Size("medium");
+            this.toppings = new List<Topping>(){
+                new Topping("cheese"),
+                new Topping("peppers"),
+                new Topping("onion"),
+                new Topping("olives")
+            };
+        }
         protected override void AddCrust()
         {
             

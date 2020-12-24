@@ -9,8 +9,13 @@ namespace PizzaWorld.Domain.Models
 {
     public class Topping : AEntity
     {
-        public double Price { get; set; }
+        //public double Price { get; set; }
         public string Name { get; set; }
-        //need a read method to get all the toppings from the DB
+        
+        public Topping(){}
+        public Topping(string name)
+        {
+            this.Name = name;
+        }
     }
 }

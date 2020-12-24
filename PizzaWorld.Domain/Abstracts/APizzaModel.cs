@@ -11,6 +11,12 @@ namespace PizzaWorld.Domain.Abstracts
         public List<Topping> Toppings {get; set;}
         protected APizzaModel()
         {
+            crust = new Crust();
+            size = new Size();
+            Toppings = new List<Topping>(){
+                new Topping(),
+                new Topping()
+            };
             AddCrust();
             AddSize();
             AddToppings();

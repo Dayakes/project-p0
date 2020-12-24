@@ -15,7 +15,7 @@ namespace PizzaWorld.Client
         }
         public Store ReadOne(string name)
         {
-            return _db.Stores.FirstOrDefault(s => s.Name == name);
+            return _db.Stores.FirstOrDefault(s => s.Name == $"**{name}**");
         }
         public IEnumerable<Order> ReadOrders(Store store) //how to make this generic
         {

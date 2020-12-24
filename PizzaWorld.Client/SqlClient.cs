@@ -16,6 +16,11 @@ namespace PizzaWorld.Client
         {
             return _db.Stores.FirstOrDefault(s => s.Name == name);
         }
+        public IEnumerable<Order> ReadOrders(Store store) //how to make this generic
+        {
+            var s = ReadOne(store.Name);
+            return s.Orders;
+        }
         public void Save(Store store)
         {
             _db.Add(store);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using PizzaWorld.Domain.Models;
 
 namespace PizzaWorld.Client
@@ -29,8 +30,22 @@ namespace PizzaWorld.Client
         }
         public void Update(Store store)
         {
-            //_db.Add(store);
-            _db.SaveChanges();
+            //      testing to try and update the database
+            // foreach(Store s in _db.Stores)
+            // {
+            //     if(s.EntityId == store.EntityId)
+            //     {
+            //         s.Orders = store.Orders;
+            //     }
+            // }
+            try
+            {
+                _db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                Console.WriteLine("No records changed");
+            }
         }
         public Store SelectStore()
         {

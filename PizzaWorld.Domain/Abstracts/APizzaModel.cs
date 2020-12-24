@@ -8,12 +8,13 @@ namespace PizzaWorld.Domain.Abstracts
     {
         public Crust crust {get; set;}
         public Size size {get; set;}
-        public List<Topping> Toppings {get; set;}
+        public List<Topping> toppings {get; set;}
+        public double price { get; set; }
         protected APizzaModel()
         {
             crust = new Crust();
             size = new Size();
-            Toppings = new List<Topping>(){
+            toppings = new List<Topping>(){
                 new Topping(),
                 new Topping()
             };

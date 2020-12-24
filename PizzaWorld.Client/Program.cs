@@ -41,7 +41,7 @@ namespace PizzaWorld.Client
 
             user.SelectedStore = _client.SelectStore();
             user.SelectedPizzas = _client.SelectPizzas();
-            user.SelectedStore.CreateOrder();
+            //user.SelectedStore.CreateOrder();
             //user.Orders.Add(user.SelectedStore.Orders.Last());
             foreach(var p in user.SelectedPizzas)
             {

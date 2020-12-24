@@ -6,15 +6,12 @@ namespace PizzaWorld.Domain.Models
 {
     public class VeggiePizza : APizzaModel
     {
-        private Crust crust;
-        private Size size;
-        private List<Topping> toppings;
-        public double price;
         public VeggiePizza()
         {
             AddCrust();
             AddSize();
             AddToppings();
+            this.price = 11;
         }
         protected override void AddCrust()
         {
@@ -38,7 +35,7 @@ namespace PizzaWorld.Domain.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            foreach (var t in Toppings)
+            foreach (var t in toppings)
             {
                 sb.AppendLine(t.Name);
             }

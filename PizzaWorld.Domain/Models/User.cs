@@ -12,10 +12,10 @@ namespace PizzaWorld.Domain.Models
         [required] must be able to only order from 1 location in a 24-hour period with no reset
         [required] must be able to only order once every 2-hour period
         */
-        public List<Order> Orders {get; set;}
-        public List<APizzaModel> SelectedPizzas {get; set;}
+        public List<Order> Orders { get; set; }
+        public List<APizzaModel> SelectedPizzas { get; set; }
         public Store SelectedStore { get; set; }
-        
+
 
         public User()
         {
@@ -23,12 +23,12 @@ namespace PizzaWorld.Domain.Models
             SelectedPizzas = new List<APizzaModel>();
             SelectedStore = new Store();
         }
-        
+
         public override string ToString()
         {
             var sb = new StringBuilder();
 
-            foreach(var p in SelectedPizzas)
+            foreach (var p in SelectedPizzas)
             {
                 sb.AppendLine(p.ToString());
             }

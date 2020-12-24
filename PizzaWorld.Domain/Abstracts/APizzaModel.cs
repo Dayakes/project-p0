@@ -6,9 +6,9 @@ namespace PizzaWorld.Domain.Abstracts
 {
     public class APizzaModel : AEntity
     {
-        public Crust crust {get; set;}
-        public Size size {get; set;}
-        public List<Topping> toppings {get; set;}
+        public Crust crust { get; set; }
+        public Size size { get; set; }
+        public List<Topping> toppings { get; set; }
         public double price { get; set; }
         protected APizzaModel()
         {
@@ -23,15 +23,15 @@ namespace PizzaWorld.Domain.Abstracts
             AddToppings();
             SetPrice();
         }
-        protected virtual void AddCrust(){}
-        protected virtual void AddSize(){}
-        protected virtual void AddToppings(){}
-        protected virtual void SetPrice(){}
+        protected virtual void AddCrust() { }
+        protected virtual void AddSize() { }
+        protected virtual void AddToppings() { }
+        protected virtual void SetPrice() { }
         public void PrintAllPizzas()
         {
             System.Console.WriteLine("Meat Pizza \nVeggie Pizza\nFlatbread Pizza"); //this will require testing
         }
-        
+
 
     }
 }

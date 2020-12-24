@@ -15,7 +15,7 @@ namespace PizzaWorld.Domain.Models
         public Topping(){}
         public Topping(string name)
         {
-            this.Name = name;
+            Name = name;
         }
     }
 }

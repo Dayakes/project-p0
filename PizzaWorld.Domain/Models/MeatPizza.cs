@@ -8,24 +8,24 @@ namespace PizzaWorld.Domain.Models
     {
         public MeatPizza()
         {
-          AddCrust();
-          AddSize();
-          AddToppings();
-          this.price = 13;
+            AddCrust();
+            AddSize();
+            AddToppings();
+            price = 13;
         }
         protected override void AddCrust()
         {
-            this.crust = new Crust("stuffed");
+            crust = new Crust("stuffed");
         }
 
         protected override void AddSize()
         {
-            this.size = new Size("large");
+            size = new Size("large");
         }
 
         protected override void AddToppings()
         {
-            this.toppings = new List<Topping>(){
+            toppings = new List<Topping>(){
             new Topping("cheese"),
             new Topping("bacon"),
             new Topping("ham"),

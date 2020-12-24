@@ -27,7 +27,7 @@ namespace PizzaWorld.Domain.Singletons
         }
         //using STORES
         public List<Store> Stores { get; set; }
-        public List<APizzaModel> Pizzas { get; set; }        
+        public List<APizzaModel> Pizzas { get; set; }
         private ClientSingleton() //constructor
         {
             Stores = new List<Store>();

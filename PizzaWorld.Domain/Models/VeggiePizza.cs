@@ -11,21 +11,21 @@ namespace PizzaWorld.Domain.Models
             AddCrust();
             AddSize();
             AddToppings();
-            this.price = 11;
+            price = 11;
         }
         protected override void AddCrust()
         {
-            this.crust = new Crust("regular");
+            crust = new Crust("regular");
         }
 
         protected override void AddSize()
         {
-            this.size = new Size("medium");
+            size = new Size("medium");
         }
 
         protected override void AddToppings()
         {
-            this.toppings = new List<Topping>(){
+            toppings = new List<Topping>(){
                 new Topping("cheese"),
                 new Topping("peppers"),
                 new Topping("onion"),

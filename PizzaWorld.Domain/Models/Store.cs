@@ -6,13 +6,13 @@ namespace PizzaWorld.Domain.Models
 {
     public class Store : AEntity
     {
-        public string Name {get;set;}
+        public string Name { get; set; }
 
-        public List<Order> Orders {get; set;}
+        public List<Order> Orders { get; set; }
         public void CreateOrder()
-         {
-             Orders.Add(new Order());
-         }
+        {
+            Orders.Add(new Order());
+        }
         bool DeleteOrder(Order order)
         {
             try
@@ -23,7 +23,11 @@ namespace PizzaWorld.Domain.Models
             catch
             {
                 return false;
-            }            
+            }
+        }
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

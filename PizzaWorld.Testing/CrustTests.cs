@@ -31,6 +31,6 @@ namespace PizzaWorld.Testing
             //Assert.IsType<double>(actual.GetPrice());
             Assert.NotNull(actual.ToString());
         }
-        
+
     }
 }

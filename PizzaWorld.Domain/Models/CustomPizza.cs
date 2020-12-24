@@ -19,9 +19,9 @@ namespace PizzaWorld.Domain.Models
         //private string[] Toppings = new string[5];
         //private string Crust;
         //private string Size;
-        
+
         //private List<string> Toppings{
-            
+
 
         //};
     }

@@ -7,13 +7,6 @@ namespace PizzaWorld.Client
     public class SqlClient
     {
         private readonly PizzaWorldContext _db = new PizzaWorldContext();
-        public SqlClient()
-        {
-            if (ReadStores().Count() == 0)
-            {
-                CreateStore();
-            }
-        }
 
         public IEnumerable<Store> ReadStores()
         {
@@ -27,13 +20,6 @@ namespace PizzaWorld.Client
         {
             _db.Add(store);
             _db.SaveChanges();
-        }
-        public void CreateStore()
-        {
-            Store store = new Store();
-            store.Name = "Dominos";
-            Save(store);
-
         }
     }
 }

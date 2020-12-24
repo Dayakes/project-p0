@@ -4,12 +4,12 @@ namespace PizzaWorld.Domain.Models
 {
     public class Size : AEntity
     {
-        public string Name{get;set;}
-        
-        public Size(){}
+        public string Name { get; set; }
+
+        public Size() { }
         public Size(string name)
         {
-            this.Name = name;
+            Name = name;
         }
     }
 }

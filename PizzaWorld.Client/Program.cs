@@ -21,16 +21,16 @@ namespace PizzaWorld.Client
 
         static void PrintAllStores()
         {
-            foreach(var store in _client.Stores)
+            foreach (var store in _client.Stores)
             {
                 System.Console.WriteLine(store);
             }
         }
         static void PrintAllStoresWithEF()
         {
-            foreach(var store in _sql.ReadStores())
+            foreach (var store in _sql.ReadStores())
             {
-                System.Console.WriteLine(store);
+                System.Console.WriteLine(store.Name);
             }
         }
         static void UserView()
@@ -43,16 +43,16 @@ namespace PizzaWorld.Client
             user.SelectedPizzas = _client.SelectPizzas();
             //user.SelectedStore.CreateOrder();
             //user.Orders.Add(user.SelectedStore.Orders.Last());
-            foreach(var p in user.SelectedPizzas)
+            foreach (var p in user.SelectedPizzas)
             {
                 System.Console.WriteLine(p.ToString());
             }
             // while user.SelectPizza() get all pizzas from the user and then close loop and create order
-            
+
             //user.Orders.Last().MakeMeatPizza();
             //user.Orders.Last().MakeVeggiePizza();
             //user.Orders.Last().MakeFlatbreadPizza();
-            
+
 
             //System.Console.WriteLine(user.ToString());
 

@@ -33,9 +33,8 @@ namespace PizzaWorld.Client
         }
         public Store SelectStore()
         {
-            int.TryParse(Console.ReadLine(), out int input); // 0 or the actual selection
-            input--;
-            return _db.Stores.ElementAtOrDefault(input);
+            string input = Console.ReadLine(); // 0 or the actual selection
+            return ReadOne(input);
         }
     }
 }

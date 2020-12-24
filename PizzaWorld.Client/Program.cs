@@ -41,7 +41,8 @@ namespace PizzaWorld.Client
 
             user.SelectedStore = _sql.SelectStore();
             user.SelectedPizzas = _client.SelectPizzas();
-            user.SelectedStore.CreateOrder();
+            user.SelectedPizzas.ToString();
+            user.SelectedStore.CreateOrder(user.SelectedPizzas);
             user.Orders.Add(user.SelectedStore.Orders.Last());
 
             _sql.Update(user.SelectedStore); //update the store with the new order
@@ -50,14 +51,6 @@ namespace PizzaWorld.Client
             {
                 System.Console.WriteLine(p.ToString());
             }
-            
-            //user.Orders.Last().MakeMeatPizza();
-            //user.Orders.Last().MakeVeggiePizza();
-            //user.Orders.Last().MakeFlatbreadPizza();
-
-
-            //System.Console.WriteLine(user.ToString());
-
         }
     }
 }

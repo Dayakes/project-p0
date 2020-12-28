@@ -8,9 +8,6 @@ namespace PizzaWorld.Domain.Models
     {
         public VeggiePizza()
         {
-            AddCrust();
-            AddSize();
-            AddToppings();
             price = 11;
         }
         protected override void AddCrust()
@@ -31,6 +28,10 @@ namespace PizzaWorld.Domain.Models
                 new Topping("onion"),
                 new Topping("olives")
             };
+        }
+        protected override void AddName()
+        {
+            Name = "Veggie Pizza";
         }
     }
 }

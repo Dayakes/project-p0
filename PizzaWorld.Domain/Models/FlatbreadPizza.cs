@@ -8,10 +8,6 @@ namespace PizzaWorld.Domain.Models
     {
         public FlatbreadPizza()
         {
-            AddCrust();
-            AddSize();
-            AddToppings();
-            AddName();
             price = 8;
         }
 

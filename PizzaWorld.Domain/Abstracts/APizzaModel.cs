@@ -44,7 +44,7 @@ namespace PizzaWorld.Domain.Abstracts
             {
                 sb.AppendLine(t.Name);
             }
-            return $"This is a {crust.Name} pizza for ${price}:\nSize: {size.Name}\nToppings: {sb.ToString()}";
+            return $"This is a {Name} for ${price}:\nCrust: {crust.Name}\nSize: {size.Name}\nToppings: {sb.ToString()}";
         }
 
         

@@ -30,22 +30,9 @@ namespace PizzaWorld.Client
         }
         public void Update(Store store)
         {
-            //      testing to try and update the database
-            // foreach(Store s in _db.Stores)
-            // {
-            //     if(s.EntityId == store.EntityId)
-            //     {
-            //         s.Orders = store.Orders;
-            //     }
-            // }
             try
             {
-                //     more testing
-                // var query = from s in _db.Stores where s.EntityId == store.EntityId select s;
-                // foreach (Store s in query)
-                // {
-                //     s.Orders = store.Orders;
-                // }
+                //    needs testing
                 _db.SaveChanges();
             }
             catch (Exception e)
@@ -55,8 +42,18 @@ namespace PizzaWorld.Client
         }
         public Store SelectStore()
         {
-            string input = Console.ReadLine(); // 0 or the actual selection
-            return ReadOne(input);
+            do
+            {
+                string input = Console.ReadLine();
+                foreach (var s in _db.Stores)
+                {
+                    if (input == s.Name)
+                    {
+                        return ReadOne(input);
+                    }
+                }
+                System.Console.WriteLine("No valid store selected, please try again");
+            } while (true);
         }
     }
 }

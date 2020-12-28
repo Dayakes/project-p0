@@ -14,7 +14,6 @@ namespace PizzaWorld.Domain.Models
         */
         private GenericPizzaFactory _pizzaFactory = new GenericPizzaFactory();
         public List<APizzaModel> Pizzas { get; set; }
-
         public Order()
         {
             Pizzas = new List<APizzaModel>();
@@ -23,17 +22,5 @@ namespace PizzaWorld.Domain.Models
         {
             Pizzas = pizzas;
         }
-        // public void MakeMeatPizza()
-        // {
-        //     Pizzas.Add(_pizzaFactory.Make<MeatPizza>());
-        // }
-        // public void MakeVeggiePizza()
-        // {
-        //     Pizzas.Add(_pizzaFactory.Make<VeggiePizza>());
-        // }
-        // public void MakeFlatbreadPizza()
-        // {
-        //     Pizzas.Add(_pizzaFactory.Make<FlatbreadPizza>());
-        // }
     }
 }

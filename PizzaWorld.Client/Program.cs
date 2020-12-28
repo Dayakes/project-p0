@@ -19,13 +19,6 @@ namespace PizzaWorld.Client
             return _client.Stores;
         }
 
-        static void PrintAllStores()
-        {
-            foreach (var store in _client.Stores)
-            {
-                System.Console.WriteLine(store);
-            }
-        }
         static void PrintAllStoresWithEF()
         {
             foreach (var store in _sql.ReadStores())
@@ -44,10 +37,17 @@ namespace PizzaWorld.Client
                 if (select == "h")
                 {
                     //show their order history
-                    user.Orders.ToString();
+                    foreach(var o in user.Orders)
+                    {
+                        foreach(var p in o.Pizzas)
+                        {
+                            p.ToString();
+                        }
+                    }
                 }
                 else if (select == "o")
                 {
+                    //still not updating things properly in the database
                     PrintAllStoresWithEF();
 
                     user.SelectedStore = _sql.SelectStore();

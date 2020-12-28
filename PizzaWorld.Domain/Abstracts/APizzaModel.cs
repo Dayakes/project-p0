@@ -31,6 +31,16 @@ namespace PizzaWorld.Domain.Abstracts
         {
             System.Console.WriteLine("Meat Pizza \nVeggie Pizza\nFlatbread Pizza"); //this will require testing
         }
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            foreach (var t in toppings)
+            {
+                sb.AppendLine(t.Name);
+            }
+            return $"This is a {crust.Name} pizza for ${price}:\nSize: {size.Name}\nToppings: {sb.ToString()}";
+        }
+
         
 
     }

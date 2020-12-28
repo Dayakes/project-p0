@@ -9,7 +9,7 @@ public class PizzaWorldContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Crust> Crusts { get; set; }
     public DbSet<Size> Sizes { get; set; }
-    
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
@@ -36,7 +36,12 @@ public class PizzaWorldContext : DbContext
                 new Store(){Name = "Pizza Hut"}
             }
         );
+        builder.Entity<Crust>().HasData(new Crust("regular"));
+        builder.Entity<Crust>().HasData(new Crust("flabread"));
+        builder.Entity<Crust>().HasData(new Crust("stuffed"));
 
-
+        builder.Entity<Size>().HasData(new Size("small"));
+        builder.Entity<Size>().HasData(new Size("medium"));
+        builder.Entity<Size>().HasData(new Size("large"));
     }
 }

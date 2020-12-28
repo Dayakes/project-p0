@@ -15,6 +15,7 @@ namespace PizzaWorld.Domain.Models
         */
         private GenericPizzaFactory _pizzaFactory = new GenericPizzaFactory();
         public List<APizzaModel> Pizzas { get; set; }
+        public List<OrderAPizzaModel> OrderAPizzaModel { get; set; }
         public long OrderId { get; set; }
         
         public long StoreId { get; set; }

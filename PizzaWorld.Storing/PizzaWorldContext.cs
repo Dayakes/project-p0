@@ -10,6 +10,7 @@ public class PizzaWorldContext : DbContext
     public DbSet<Crust> Crusts { get; set; }
     public DbSet<Size> Sizes { get; set; }
     public DbSet<Order> Orders { get; set; }
+    public DbSet<OrderAPizzaModel> OrderAPizzaModel { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
@@ -26,6 +27,15 @@ public class PizzaWorldContext : DbContext
         builder.Entity<Order>().HasKey(o => o.OrderId);
         builder.Entity<Size>().HasKey(si => si.SizeId);
         builder.Entity<Topping>().HasKey(t => t.ToppingId);
+        builder.Entity<OrderAPizzaModel>().HasKey(op => new {op.OrderId, op.PizzaId});
+        builder.Entity<OrderAPizzaModel>()
+               .HasOne(op => op.Order)
+               .WithMany(p => p.OrderAPizzaModel)
+               .HasForeignKey(op => op.OrderId);
+        builder.Entity<OrderAPizzaModel>()
+                .HasOne(op => op.APizzaModel)
+                .WithMany(o => o.OrderAPizzaModels)
+                .HasForeignKey(op => op.PizzaId);
 
         SeedData(builder);
     }

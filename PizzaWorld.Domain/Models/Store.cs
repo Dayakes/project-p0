@@ -15,7 +15,6 @@ namespace PizzaWorld.Domain.Models
         public Store()
         {
             Orders = new List<Order>();
-            StoreId = System.DateTime.Now.Ticks;
         }
         public void CreateOrder(List<APizzaModel> Pizzas)
         {

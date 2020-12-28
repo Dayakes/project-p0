@@ -12,7 +12,7 @@ namespace PizzaWorld.Client
         private static readonly SqlClient _sql = new SqlClient();
         static void Main(string[] args)
         {
-            UserView();
+            NewOrReturning();
         }
 
         static IEnumerable<Store> GetAllStores()
@@ -27,9 +27,31 @@ namespace PizzaWorld.Client
                 System.Console.WriteLine(store.Name);
             }
         }
-        static void UserView()
+        static void NewOrReturning()
         {
-            var user = new User();
+            System.Console.WriteLine("Are you a New (n) or Returning (r) user?");
+            var input = System.Console.ReadLine();
+            if(input == "n")
+            {
+                //enter new name
+                System.Console.WriteLine("Please enter your name with no capital letters:");
+                var name = System.Console.ReadLine().ToLower();
+                User user = new User(name);
+                _sql.AddUser(user);
+                _sql.Update();
+                UserView(user);
+            }
+            else if(input == "r")
+            {
+                //ask for name for login
+                System.Console.WriteLine("please enter your name for login:");
+                var name = System.Console.ReadLine();
+                User user = _sql.GetUser(name);
+                UserView(user);
+            }
+        }
+        static void UserView(User user)
+        {
             var stay = true;
             do
             {
@@ -52,15 +74,16 @@ namespace PizzaWorld.Client
                     PrintAllStoresWithEF();
 
                     var SelectedStore = _sql.SelectStore();
-                    
-
                     List<APizzaModel> SelectedPizzas = _client.SelectPizzas();
+
                     SelectedPizzas.ToString();
+
                     SelectedStore.CreateOrder(SelectedPizzas);
                     user.Orders.Add(SelectedStore.Orders.Last());
-                    _sql.AttachOrder(SelectedStore.Orders.Last()); //testing attach
+                    //_sql.AttachOrder(SelectedStore.Orders.Last()); //testing attach
 
-                    _sql.Update(); //update DB with the store with the new order
+                    _sql.SaveOrder(user.Orders.Last()); //save new order to context
+                    _sql.Update();
 
                     foreach (var p in SelectedPizzas)
                     {

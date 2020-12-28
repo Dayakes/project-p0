@@ -24,7 +24,6 @@ namespace PizzaWorld.Domain.Abstracts
             AddSize();
             AddToppings();
             SetPrice();
-            PizzaId = System.DateTime.Now.Ticks;
         }
         protected virtual void AddCrust(){}
         protected virtual void AddSize(){}

@@ -8,7 +8,6 @@ namespace PizzaWorld.Domain.Models
         public long CrustId { get; set; }
         public Crust()
         {
-            CrustId = System.DateTime.Now.Ticks;
         }
         public Crust(string name)
         {

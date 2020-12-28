@@ -11,7 +11,6 @@ namespace PizzaWorld.Domain.Models
         public Size(string name)
         {
             Name = name;
-            SizeId = System.DateTime.Now.Ticks;
         }
     }
 }

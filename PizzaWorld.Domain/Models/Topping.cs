@@ -16,7 +16,6 @@ namespace PizzaWorld.Domain.Models
         public Topping(string name)
         {
             Name = name;
-            ToppingId = System.DateTime.Now.Ticks;
         }
     }
 }

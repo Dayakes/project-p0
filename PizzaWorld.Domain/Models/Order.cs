@@ -22,12 +22,10 @@ namespace PizzaWorld.Domain.Models
         public Order()
         {
             Pizzas = new List<APizzaModel>();
-            OrderId = System.DateTime.Now.Ticks;
         }
         public Order(List<APizzaModel> pizzas)
         {
             Pizzas = pizzas;
-            OrderId = System.DateTime.Now.Ticks;
         }
     }
 }

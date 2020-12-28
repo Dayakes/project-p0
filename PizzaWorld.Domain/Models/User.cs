@@ -14,12 +14,18 @@ namespace PizzaWorld.Domain.Models
         */
         public List<Order> Orders { get; set; }
         public long UserId { get; set; }
+        public string Name { get; set; }
 
 
         public User()
         {
             Orders = new List<Order>();
+        }
+        public User(string name)
+        {
+            Orders = new List<Order>();
             UserId = System.DateTime.Now.Ticks;
+            Name = name;
         }
 
         // public override string ToString()

@@ -20,11 +20,11 @@ namespace PizzaWorld.Domain.Models
         public User()
         {
             Orders = new List<Order>();
+            Name = "";
         }
         public User(string name)
         {
             Orders = new List<Order>();
-            UserId = System.DateTime.Now.Ticks;
             Name = name;
         }
 

@@ -22,6 +22,11 @@ public class PizzaWorldContext : DbContext
     {
         builder.Entity<Store>().HasKey(s => s.StoreId);
         builder.Entity<User>().HasKey(u => u.UserId);
+        builder.Entity<User>()
+            .Property(u => u.Name)
+            .HasColumnName("Name")
+            .IsRequired();
+
         builder.Entity<APizzaModel>().HasKey(p => p.PizzaId);
         builder.Entity<Crust>().HasKey(c => c.CrustId);
         builder.Entity<Order>().HasKey(o => o.OrderId);
@@ -29,7 +34,7 @@ public class PizzaWorldContext : DbContext
         builder.Entity<Topping>().HasKey(t => t.ToppingId);
 
         // MANY TO MANY ORDERS TO PIZZAS SETUP HERE
-        builder.Entity<OrderAPizzaModel>().HasKey(op => new {op.OrderId, op.PizzaId});
+        builder.Entity<OrderAPizzaModel>().HasKey(op => new { op.OrderId, op.PizzaId });
         builder.Entity<OrderAPizzaModel>()
                .HasOne(op => op.Order)
                .WithMany(p => p.OrderAPizzaModel)
@@ -39,7 +44,7 @@ public class PizzaWorldContext : DbContext
                 .WithMany(o => o.OrderAPizzaModels)
                 .HasForeignKey(op => op.PizzaId);
 
-        //SeedData(builder);
+        // SeedData(builder);
     }
     private void SeedData(ModelBuilder builder)
     {

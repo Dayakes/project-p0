@@ -131,6 +131,20 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasKey("StoreId");
 
                     b.ToTable("Stores");
+
+                    b.HasData(
+                        new
+                        {
+                            StoreId = 637447080049766286L,
+                            Name = "Dominos",
+                            OrderId = 0L
+                        },
+                        new
+                        {
+                            StoreId = 637447080049798790L,
+                            Name = "Pizza Hut",
+                            OrderId = 0L
+                        });
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Topping", b =>
@@ -161,7 +175,9 @@ namespace PizzaWorld.Storing.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Name");
 
                     b.HasKey("UserId");
 

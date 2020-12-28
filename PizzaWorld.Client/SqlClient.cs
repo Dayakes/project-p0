@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using PizzaWorld.Domain.Abstracts;
 using PizzaWorld.Domain.Models;
 
 namespace PizzaWorld.Client
@@ -45,6 +46,9 @@ namespace PizzaWorld.Client
         }
         public void SaveOrder(Order o)
         {
+            List<OrderAPizzaModel> oap = new List<OrderAPizzaModel>();
+            //i need to add both of the joins to be saved
+            
             _db.Orders.Add(o);
         }
         public void Save(Store store)

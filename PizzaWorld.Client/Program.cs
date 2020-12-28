@@ -81,7 +81,7 @@ namespace PizzaWorld.Client
                     SelectedStore.CreateOrder(SelectedPizzas);
                     user.Orders.Add(SelectedStore.Orders.Last());
                     //_sql.AttachOrder(SelectedStore.Orders.Last()); //testing attach
-
+                    
                     _sql.SaveOrder(user.Orders.Last()); //save new order to context
                     _sql.Update();
 

@@ -28,7 +28,11 @@ namespace PizzaWorld.Client
             _db.Add(store);
             _db.SaveChanges();
         }
-        public void Update(Store store)
+        public void AttachOrder( Order o)
+        {
+            _db.Attach(o);
+        }
+        public void Update()
         {
             try
             {
@@ -42,18 +46,19 @@ namespace PizzaWorld.Client
         }
         public Store SelectStore()
         {
-            do
-            {
+            // do
+            // {
                 string input = Console.ReadLine();
-                foreach (var s in _db.Stores)
-                {
-                    if (input == s.Name)
-                    {
-                        return ReadOne(input);
-                    }
-                }
-                System.Console.WriteLine("No valid store selected, please try again");
-            } while (true);
+                return ReadOne(input);
+                // foreach (var s in _db.Stores)
+                // {
+                //     if (input == s.Name)
+                //     {
+                //         return ReadOne(input);
+                //     }
+                // }
+                // System.Console.WriteLine("No valid store selected, please try again");
+            // } while (true);
         }
     }
 }

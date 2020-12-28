@@ -1,16 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
 {
-    public class Store : AEntity
+    public class Store
     {
         public string Name { get; set; }
+
         public List<Order> Orders { get; set; }
+        public long StoreId { get; set; }
+        public long OrderId { get; set; }
         public Store()
         {
             Orders = new List<Order>();
+            StoreId = System.DateTime.Now.Ticks;
         }
         public void CreateOrder(List<APizzaModel> Pizzas)
         {

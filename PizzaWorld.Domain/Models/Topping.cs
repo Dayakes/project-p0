@@ -7,15 +7,16 @@ using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
 {
-    public class Topping : AEntity
+    public class Topping
     {
-        //public double Price { get; set; }
         public string Name { get; set; }
-        
-        public Topping(){}
+        public long ToppingId { get; set; }
+
+        public Topping() { }
         public Topping(string name)
         {
             Name = name;
+            ToppingId = System.DateTime.Now.Ticks;
         }
     }
 }

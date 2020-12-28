@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PizzaWorld.Domain.Abstracts;
 using PizzaWorld.Domain.Models;
 using PizzaWorld.Domain.Singletons;
 
@@ -50,15 +51,18 @@ namespace PizzaWorld.Client
                     //still not updating things properly in the database
                     PrintAllStoresWithEF();
 
-                    user.SelectedStore = _sql.SelectStore();
-                    user.SelectedPizzas = _client.SelectPizzas();
-                    user.SelectedPizzas.ToString();
-                    user.SelectedStore.CreateOrder(user.SelectedPizzas);
-                    user.Orders.Add(user.SelectedStore.Orders.Last());
+                    var SelectedStore = _sql.SelectStore();
+                    
 
-                    _sql.Update(user.SelectedStore); //update the store with the new order
+                    List<APizzaModel> SelectedPizzas = _client.SelectPizzas();
+                    SelectedPizzas.ToString();
+                    SelectedStore.CreateOrder(SelectedPizzas);
+                    user.Orders.Add(SelectedStore.Orders.Last());
+                    _sql.AttachOrder(SelectedStore.Orders.Last()); //testing attach
 
-                    foreach (var p in user.SelectedPizzas)
+                    _sql.Update(); //update DB with the store with the new order
+
+                    foreach (var p in SelectedPizzas)
                     {
                         System.Console.WriteLine(p.ToString());
                     }

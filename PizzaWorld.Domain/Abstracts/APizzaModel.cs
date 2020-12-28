@@ -4,24 +4,26 @@ using PizzaWorld.Domain.Models;
 
 namespace PizzaWorld.Domain.Abstracts
 {
-    public class APizzaModel : AEntity
+    public class APizzaModel 
     {
         public Crust crust {get; set;}
         public Size size {get; set;}
-        public List<Topping> toppings {get; set;}
+        public ICollection<Topping> toppings {get; set;}
         public double price { get; set; }
+        public long PizzaId { get; set; }
         protected APizzaModel()
         {
-            crust = new Crust();
-            size = new Size();
-            toppings = new List<Topping>(){
-                new Topping(),
-                new Topping()
-            };
+            // crust = new Crust();
+            // size = new Size();
+            // toppings = new List<Topping>(){
+            //     new Topping(),
+            //     new Topping()
+            // };
             AddCrust();
             AddSize();
             AddToppings();
             SetPrice();
+            PizzaId = System.DateTime.Now.Ticks;
         }
         protected virtual void AddCrust(){}
         protected virtual void AddSize(){}

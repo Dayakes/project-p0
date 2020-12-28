@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace PizzaWorld.Storing.Migrations
 {
     [DbContext(typeof(PizzaWorldContext))]
-    [Migration("20201224011443_third migration")]
-    partial class thirdmigration
+    [Migration("20201228021424_removed user properties for selects")]
+    partial class removeduserpropertiesforselects
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,154 +22,172 @@ namespace PizzaWorld.Storing.Migrations
 
             modelBuilder.Entity("PizzaWorld.Domain.Abstracts.APizzaModel", b =>
                 {
-                    b.Property<long>("EntityId")
+                    b.Property<long>("PizzaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<long?>("OrderEntityId")
+                    b.Property<long?>("CrustId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("UserEntityId")
+                    b.Property<long?>("OrderId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("crustEntityId")
+                    b.Property<long?>("SizeId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("sizeEntityId")
+                    b.Property<long?>("UserId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("EntityId");
+                    b.Property<double>("price")
+                        .HasColumnType("float");
 
-                    b.HasIndex("OrderEntityId");
+                    b.HasKey("PizzaId");
 
-                    b.HasIndex("UserEntityId");
+                    b.HasIndex("CrustId");
 
-                    b.HasIndex("crustEntityId");
+                    b.HasIndex("OrderId");
 
-                    b.HasIndex("sizeEntityId");
+                    b.HasIndex("SizeId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("APizzaModel");
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Abstracts.Crust", b =>
+            modelBuilder.Entity("PizzaWorld.Domain.Models.Crust", b =>
                 {
-                    b.Property<long>("EntityId")
+                    b.Property<long>("CrustId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.HasKey("EntityId");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CrustId");
 
                     b.ToTable("Crusts");
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Abstracts.Size", b =>
+            modelBuilder.Entity("PizzaWorld.Domain.Models.Order", b =>
                 {
-                    b.Property<long>("EntityId")
+                    b.Property<long>("OrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.HasKey("EntityId");
+                    b.Property<long?>("StoreId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("StoreId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("PizzaWorld.Domain.Models.Size", b =>
+                {
+                    b.Property<long>("SizeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SizeId");
 
                     b.ToTable("Sizes");
                 });
 
-            modelBuilder.Entity("PizzaWorld.Domain.Models.Order", b =>
-                {
-                    b.Property<long>("EntityId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<long?>("StoreEntityId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("UserEntityId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("EntityId");
-
-                    b.HasIndex("StoreEntityId");
-
-                    b.HasIndex("UserEntityId");
-
-                    b.ToTable("Order");
-                });
-
             modelBuilder.Entity("PizzaWorld.Domain.Models.Store", b =>
                 {
-                    b.Property<long>("EntityId")
+                    b.Property<long>("StoreId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("EntityId");
+                    b.HasKey("StoreId");
 
                     b.ToTable("Stores");
+
+                    b.HasData(
+                        new
+                        {
+                            StoreId = 637447004637277327L,
+                            Name = "Dominos"
+                        },
+                        new
+                        {
+                            StoreId = 637447004637308875L,
+                            Name = "Pizza Hut"
+                        });
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Topping", b =>
                 {
-                    b.Property<long>("EntityId")
+                    b.Property<long>("ToppingId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<long?>("APizzaModelEntityId")
+                    b.Property<long?>("APizzaModelPizzaId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.HasKey("ToppingId");
 
-                    b.HasKey("EntityId");
-
-                    b.HasIndex("APizzaModelEntityId");
+                    b.HasIndex("APizzaModelPizzaId");
 
                     b.ToTable("Topping");
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.User", b =>
                 {
-                    b.Property<long>("EntityId")
+                    b.Property<long>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<long?>("SelectedStoreEntityId")
+                    b.Property<long?>("SelectedStoreStoreId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("EntityId");
+                    b.HasKey("UserId");
 
-                    b.HasIndex("SelectedStoreEntityId");
+                    b.HasIndex("SelectedStoreStoreId");
 
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Abstracts.APizzaModel", b =>
                 {
+                    b.HasOne("PizzaWorld.Domain.Models.Crust", "crust")
+                        .WithMany()
+                        .HasForeignKey("CrustId");
+
                     b.HasOne("PizzaWorld.Domain.Models.Order", null)
                         .WithMany("Pizzas")
-                        .HasForeignKey("OrderEntityId");
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("PizzaWorld.Domain.Models.Size", "size")
+                        .WithMany()
+                        .HasForeignKey("SizeId");
 
                     b.HasOne("PizzaWorld.Domain.Models.User", null)
                         .WithMany("SelectedPizzas")
-                        .HasForeignKey("UserEntityId");
-
-                    b.HasOne("PizzaWorld.Domain.Abstracts.Crust", "crust")
-                        .WithMany()
-                        .HasForeignKey("crustEntityId");
-
-                    b.HasOne("PizzaWorld.Domain.Abstracts.Size", "size")
-                        .WithMany()
-                        .HasForeignKey("sizeEntityId");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("crust");
 
@@ -180,32 +198,32 @@ namespace PizzaWorld.Storing.Migrations
                 {
                     b.HasOne("PizzaWorld.Domain.Models.Store", null)
                         .WithMany("Orders")
-                        .HasForeignKey("StoreEntityId");
+                        .HasForeignKey("StoreId");
 
                     b.HasOne("PizzaWorld.Domain.Models.User", null)
                         .WithMany("Orders")
-                        .HasForeignKey("UserEntityId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Topping", b =>
                 {
                     b.HasOne("PizzaWorld.Domain.Abstracts.APizzaModel", null)
-                        .WithMany("Toppings")
-                        .HasForeignKey("APizzaModelEntityId");
+                        .WithMany("toppings")
+                        .HasForeignKey("APizzaModelPizzaId");
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.User", b =>
                 {
                     b.HasOne("PizzaWorld.Domain.Models.Store", "SelectedStore")
                         .WithMany()
-                        .HasForeignKey("SelectedStoreEntityId");
+                        .HasForeignKey("SelectedStoreStoreId");
 
                     b.Navigation("SelectedStore");
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Abstracts.APizzaModel", b =>
                 {
-                    b.Navigation("Toppings");
+                    b.Navigation("toppings");
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Order", b =>

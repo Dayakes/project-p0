@@ -18,10 +18,5 @@ namespace PizzaWorld.Testing
             Assert.IsType<Order>(actual);
             Assert.NotNull(actual);
         }
-        
-
-        
-
-        
     }
 }

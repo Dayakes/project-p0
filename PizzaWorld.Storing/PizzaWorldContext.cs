@@ -9,6 +9,7 @@ public class PizzaWorldContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Crust> Crusts { get; set; }
     public DbSet<Size> Sizes { get; set; }
+    public DbSet<Order> Orders { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
@@ -18,13 +19,13 @@ public class PizzaWorldContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Store>().HasKey(s => s.EntityId);
-        builder.Entity<User>().HasKey(u => u.EntityId);
-        builder.Entity<APizzaModel>().HasKey(p => p.EntityId);
-        builder.Entity<Crust>().HasKey(c => c.EntityId);
-        builder.Entity<Order>().HasKey(o => o.EntityId);
-        builder.Entity<Size>().HasKey(si => si.EntityId);
-        builder.Entity<Topping>().HasKey(t => t.EntityId);
+        builder.Entity<Store>().HasKey(s => s.StoreId);
+        builder.Entity<User>().HasKey(u => u.UserId);
+        builder.Entity<APizzaModel>().HasKey(p => p.PizzaId);
+        builder.Entity<Crust>().HasKey(c => c.CrustId);
+        builder.Entity<Order>().HasKey(o => o.OrderId);
+        builder.Entity<Size>().HasKey(si => si.SizeId);
+        builder.Entity<Topping>().HasKey(t => t.ToppingId);
 
         SeedData(builder);
     }
@@ -36,12 +37,5 @@ public class PizzaWorldContext : DbContext
                 new Store(){Name = "Pizza Hut"}
             }
         );
-        builder.Entity<Crust>().HasData(new Crust("regular"));
-        builder.Entity<Crust>().HasData(new Crust("flabread"));
-        builder.Entity<Crust>().HasData(new Crust("stuffed"));
-
-        builder.Entity<Size>().HasData(new Size("small"));
-        builder.Entity<Size>().HasData(new Size("medium"));
-        builder.Entity<Size>().HasData(new Size("large"));
     }
 }

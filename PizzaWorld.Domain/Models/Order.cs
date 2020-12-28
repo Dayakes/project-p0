@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using PizzaWorld.Domain.Abstracts;
 using PizzaWorld.Domain.Factories;
 
 namespace PizzaWorld.Domain.Models
 {
-    public class Order : AEntity
+    public class Order
     {
         /*
         [required] each order must be able to view/list/edit its collection of pizzas
@@ -14,13 +15,18 @@ namespace PizzaWorld.Domain.Models
         */
         private GenericPizzaFactory _pizzaFactory = new GenericPizzaFactory();
         public List<APizzaModel> Pizzas { get; set; }
+        public long OrderId { get; set; }
+        
+        public long StoreId { get; set; }
         public Order()
         {
             Pizzas = new List<APizzaModel>();
+            OrderId = System.DateTime.Now.Ticks;
         }
         public Order(List<APizzaModel> pizzas)
         {
             Pizzas = pizzas;
+            OrderId = System.DateTime.Now.Ticks;
         }
     }
 }

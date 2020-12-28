@@ -5,7 +5,7 @@ using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
 {
-    public class User : AEntity
+    public class User
     {
         /*
         [required] must be able to view/list its order history
@@ -13,26 +13,24 @@ namespace PizzaWorld.Domain.Models
         [required] must be able to only order once every 2-hour period
         */
         public List<Order> Orders { get; set; }
-        public List<APizzaModel> SelectedPizzas { get; set; }
-        public Store SelectedStore { get; set; }
+        public long UserId { get; set; }
 
 
         public User()
         {
             Orders = new List<Order>();
-            SelectedPizzas = new List<APizzaModel>();
-            SelectedStore = new Store();
+            UserId = System.DateTime.Now.Ticks;
         }
 
-        public override string ToString()
-        {
-            var sb = new StringBuilder();
+        // public override string ToString()
+        // {
+        //     var sb = new StringBuilder();
 
-            foreach (var p in SelectedPizzas)
-            {
-                sb.AppendLine(p.ToString());
-            }
-            return $"You have selected this store: {SelectedStore} and ordered these pizzas: {sb.ToString()}"; //string interpolation using the $
-        }
+        //     foreach (var p in SelectedPizzas)
+        //     {
+        //         sb.AppendLine(p.ToString());
+        //     }
+        //     return $"You have selected this store: {SelectedStore} and ordered these pizzas: {sb.ToString()}"; //string interpolation using the $
+        // }
     }
 }

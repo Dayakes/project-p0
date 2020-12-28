@@ -40,14 +40,15 @@ namespace PizzaWorld.Client
             // }
             try
             {
-                var query = from s in _db.Stores where s.EntityId == store.EntityId select s;
-                foreach (Store s in query)
-                {
-                    s.Orders = store.Orders;
-                }
+                //     more testing
+                // var query = from s in _db.Stores where s.EntityId == store.EntityId select s;
+                // foreach (Store s in query)
+                // {
+                //     s.Orders = store.Orders;
+                // }
                 _db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }

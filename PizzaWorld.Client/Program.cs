@@ -36,21 +36,43 @@ namespace PizzaWorld.Client
         static void UserView()
         {
             var user = new User();
-
-            PrintAllStoresWithEF();
-
-            user.SelectedStore = _sql.SelectStore();
-            user.SelectedPizzas = _client.SelectPizzas();
-            user.SelectedPizzas.ToString();
-            user.SelectedStore.CreateOrder(user.SelectedPizzas);
-            user.Orders.Add(user.SelectedStore.Orders.Last());
-
-            _sql.Update(user.SelectedStore); //update the store with the new order
-
-            foreach (var p in user.SelectedPizzas)
+            var stay = true;
+            do
             {
-                System.Console.WriteLine(p.ToString());
-            }
+                System.Console.WriteLine("would you like to view your history (h), place an order (o), or exit the program (x)?");
+                var select = System.Console.ReadLine();
+                if (select == "h")
+                {
+                    //show their order history
+                    user.Orders.ToString();
+                }
+                else if (select == "o")
+                {
+                    PrintAllStoresWithEF();
+
+                    user.SelectedStore = _sql.SelectStore();
+                    user.SelectedPizzas = _client.SelectPizzas();
+                    user.SelectedPizzas.ToString();
+                    user.SelectedStore.CreateOrder(user.SelectedPizzas);
+                    user.Orders.Add(user.SelectedStore.Orders.Last());
+
+                    _sql.Update(user.SelectedStore); //update the store with the new order
+
+                    foreach (var p in user.SelectedPizzas)
+                    {
+                        System.Console.WriteLine(p.ToString());
+                    }
+                }
+                else if (select == "x")
+                {
+                    stay = false;
+                    System.Console.WriteLine("Have a nice day!");
+                }
+                else
+                {
+                    System.Console.WriteLine("No valid selection made, please try again");
+                }
+            } while (stay);
         }
     }
 }

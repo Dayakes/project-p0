@@ -11,7 +11,6 @@ public class PizzaWorldContext : DbContext
     public DbSet<Size> Sizes { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<APizzaModel> Pizzas { get; set; }
-    // public DbSet<OrderAPizzaModel> OrderAPizzaModel { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)

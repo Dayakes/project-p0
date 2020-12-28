@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace PizzaWorld.Storing.Migrations
 {
     [DbContext(typeof(PizzaWorldContext))]
-    [Migration("20201228042005_forced user name property")]
-    partial class forcedusernameproperty
+    [Migration("20201228053514_removed orderid from store")]
+    partial class removedorderidfromstore
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace PizzaWorld.Storing.Migrations
                     b.Property<long?>("CrustId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("OrderId")
+                    b.Property<long>("OrderId")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("SizeId")
@@ -47,22 +47,7 @@ namespace PizzaWorld.Storing.Migrations
 
                     b.HasIndex("SizeId");
 
-                    b.ToTable("APizzaModel");
-                });
-
-            modelBuilder.Entity("PizzaWorld.Domain.Abstracts.OrderAPizzaModel", b =>
-                {
-                    b.Property<long>("OrderId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("PizzaId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("OrderId", "PizzaId");
-
-                    b.HasIndex("PizzaId");
-
-                    b.ToTable("OrderAPizzaModel");
+                    b.ToTable("Pizzas");
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Crust", b =>
@@ -90,7 +75,7 @@ namespace PizzaWorld.Storing.Migrations
                     b.Property<long>("StoreId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("UserId")
+                    b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
                     b.HasKey("OrderId");
@@ -127,9 +112,6 @@ namespace PizzaWorld.Storing.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("OrderId")
-                        .HasColumnType("bigint");
-
                     b.HasKey("StoreId");
 
                     b.ToTable("Stores");
@@ -137,15 +119,13 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            StoreId = 637447080049766286L,
-                            Name = "Dominos",
-                            OrderId = 0L
+                            StoreId = 637447125145571039L,
+                            Name = "Dominos"
                         },
                         new
                         {
-                            StoreId = 637447080049798790L,
-                            Name = "Pizza Hut",
-                            OrderId = 0L
+                            StoreId = 637447125145603137L,
+                            Name = "Pizza Hut"
                         });
                 });
 
@@ -194,7 +174,9 @@ namespace PizzaWorld.Storing.Migrations
 
                     b.HasOne("PizzaWorld.Domain.Models.Order", null)
                         .WithMany("Pizzas")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PizzaWorld.Domain.Models.Size", "size")
                         .WithMany()
@@ -203,25 +185,6 @@ namespace PizzaWorld.Storing.Migrations
                     b.Navigation("crust");
 
                     b.Navigation("size");
-                });
-
-            modelBuilder.Entity("PizzaWorld.Domain.Abstracts.OrderAPizzaModel", b =>
-                {
-                    b.HasOne("PizzaWorld.Domain.Models.Order", "Order")
-                        .WithMany("OrderAPizzaModel")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PizzaWorld.Domain.Abstracts.APizzaModel", "APizzaModel")
-                        .WithMany("OrderAPizzaModels")
-                        .HasForeignKey("PizzaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("APizzaModel");
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Order", b =>
@@ -234,7 +197,9 @@ namespace PizzaWorld.Storing.Migrations
 
                     b.HasOne("PizzaWorld.Domain.Models.User", null)
                         .WithMany("Orders")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Topping", b =>
@@ -246,15 +211,11 @@ namespace PizzaWorld.Storing.Migrations
 
             modelBuilder.Entity("PizzaWorld.Domain.Abstracts.APizzaModel", b =>
                 {
-                    b.Navigation("OrderAPizzaModels");
-
                     b.Navigation("toppings");
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Order", b =>
                 {
-                    b.Navigation("OrderAPizzaModel");
-
                     b.Navigation("Pizzas");
                 });
 

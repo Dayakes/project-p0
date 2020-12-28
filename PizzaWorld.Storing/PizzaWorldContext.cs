@@ -10,7 +10,8 @@ public class PizzaWorldContext : DbContext
     public DbSet<Crust> Crusts { get; set; }
     public DbSet<Size> Sizes { get; set; }
     public DbSet<Order> Orders { get; set; }
-    public DbSet<OrderAPizzaModel> OrderAPizzaModel { get; set; }
+    public DbSet<APizzaModel> Pizzas { get; set; }
+    // public DbSet<OrderAPizzaModel> OrderAPizzaModel { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
@@ -34,25 +35,25 @@ public class PizzaWorldContext : DbContext
         builder.Entity<Topping>().HasKey(t => t.ToppingId);
 
         // MANY TO MANY ORDERS TO PIZZAS SETUP HERE
-        builder.Entity<OrderAPizzaModel>().HasKey(op => new { op.OrderId, op.PizzaId });
-        builder.Entity<OrderAPizzaModel>()
-               .HasOne(op => op.Order)
-               .WithMany(p => p.OrderAPizzaModel)
-               .HasForeignKey(op => op.OrderId);
-        builder.Entity<OrderAPizzaModel>()
-                .HasOne(op => op.APizzaModel)
-                .WithMany(o => o.OrderAPizzaModels)
-                .HasForeignKey(op => op.PizzaId);
+        // builder.Entity<OrderAPizzaModel>().HasKey(op => new { op.OrderId, op.PizzaId });
+        // builder.Entity<OrderAPizzaModel>()
+        //        .HasOne(op => op.Order)
+        //        .WithMany(p => p.OrderAPizzaModel)
+        //        .HasForeignKey(op => op.OrderId);
+        // builder.Entity<OrderAPizzaModel>()
+        //         .HasOne(op => op.APizzaModel)
+        //         .WithMany(o => o.OrderAPizzaModels)
+        //         .HasForeignKey(op => op.PizzaId);
 
-        // SeedData(builder);
+        SeedData(builder);
     }
     private void SeedData(ModelBuilder builder)
     {
-        // builder.Entity<Store>().HasData(new List<Store>
-        //     {
-        //         new Store(){Name = "Dominos",StoreId = System.DateTime.Now.Ticks},
-        //         new Store(){Name = "Pizza Hut",StoreId = System.DateTime.Now.Ticks}
-        //     }
-        // );
+        builder.Entity<Store>().HasData(new List<Store>
+            {
+                new Store(){Name = "Dominos",StoreId = System.DateTime.Now.Ticks},
+                new Store(){Name = "Pizza Hut",StoreId = System.DateTime.Now.Ticks}
+            }
+        );
     }
 }

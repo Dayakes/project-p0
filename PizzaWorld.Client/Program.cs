@@ -47,6 +47,11 @@ namespace PizzaWorld.Client
                 System.Console.WriteLine("please enter your name for login:");
                 var name = System.Console.ReadLine();
                 User user = _sql.GetUser(name);
+                user.Orders = _sql.ReadOrders(user.UserId).ToList();
+                foreach(Order o in user.Orders)
+                {
+                    o.Pizzas = _sql.GetPizzas(o);
+                }
                 UserView(user);
             }
         }
@@ -62,15 +67,11 @@ namespace PizzaWorld.Client
                     //show their order history
                     foreach(var o in user.Orders)
                     {
-                        foreach(var p in o.Pizzas)
-                        {
-                            p.ToString();
-                        }
+                        System.Console.WriteLine(o.ToString());
                     }
                 }
                 else if (select == "o")
                 {
-                    //still not updating things properly in the database
                     PrintAllStoresWithEF();
 
                     var SelectedStore = _sql.SelectStore();
@@ -80,7 +81,6 @@ namespace PizzaWorld.Client
 
                     SelectedStore.CreateOrder(SelectedPizzas);
                     user.Orders.Add(SelectedStore.Orders.Last());
-                    //_sql.AttachOrder(SelectedStore.Orders.Last()); //testing attach
                     
                     _sql.SaveOrder(user.Orders.Last()); //save new order to context
                     _sql.Update();

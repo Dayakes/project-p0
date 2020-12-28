@@ -3,14 +3,16 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace PizzaWorld.Storing.Migrations
 {
     [DbContext(typeof(PizzaWorldContext))]
-    partial class PizzaWorldContextModelSnapshot : ModelSnapshot
+    [Migration("20201228052152_testing things with pizzas")]
+    partial class testingthingswithpizzas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,21 +112,12 @@ namespace PizzaWorld.Storing.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long>("OrderId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("StoreId");
 
                     b.ToTable("Stores");
-
-                    b.HasData(
-                        new
-                        {
-                            StoreId = 637447125145571039L,
-                            Name = "Dominos"
-                        },
-                        new
-                        {
-                            StoreId = 637447125145603137L,
-                            Name = "Pizza Hut"
-                        });
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Topping", b =>

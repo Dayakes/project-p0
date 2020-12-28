@@ -9,9 +9,10 @@ namespace PizzaWorld.Domain.Abstracts
         public Crust crust {get; set;}
         public Size size {get; set;}
         public ICollection<Topping> toppings {get; set;}
-        public List<OrderAPizzaModel> OrderAPizzaModels { get; set; }
+        // public List<OrderAPizzaModel> OrderAPizzaModels { get; set; }
         public double price { get; set; }
         public long PizzaId { get; set; }
+        public long OrderId { get; set; }
         protected APizzaModel()
         {
             // crust = new Crust();

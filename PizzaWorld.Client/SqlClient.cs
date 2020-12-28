@@ -30,23 +30,30 @@ namespace PizzaWorld.Client
         {
             return _db.Stores.FirstOrDefault(s => s.Name == name);
         }
+        public User ReadOneUser(string name)
+        {
+            return _db.Users.FirstOrDefault(u => u.Name == name);
+        }
         public User GetUser(string name)
         {
             return _db.Users.FirstOrDefault(u => u.Name == name);
+        }
+        public List<APizzaModel> GetPizzas(Order o)
+        {
+            return _db.Pizzas.Where(p => p.OrderId == o.OrderId).ToList();
         }
         public void AddUser(User user)
         {
             _db.Users.Add(user);
             _db.SaveChanges();
         }
-        public IEnumerable<Order> ReadOrders(Store store) //how to make this generic
+        public IEnumerable<Order> ReadOrders(long id) //i need to get the orders based on the users id
         {
-            var s = ReadOneStore(store.Name);
-            return s.Orders;
+            return _db.Orders.Where(o => o.UserId == id);
         }
         public void SaveOrder(Order o)
         {
-            List<OrderAPizzaModel> oap = new List<OrderAPizzaModel>();
+            // List<OrderAPizzaModel> oap = new List<OrderAPizzaModel>();
             //i need to add both of the joins to be saved
             
             _db.Orders.Add(o);

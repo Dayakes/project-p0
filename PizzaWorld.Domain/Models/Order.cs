@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 using PizzaWorld.Domain.Abstracts;
 using PizzaWorld.Domain.Factories;
 
@@ -15,8 +16,9 @@ namespace PizzaWorld.Domain.Models
         */
         private GenericPizzaFactory _pizzaFactory = new GenericPizzaFactory();
         public List<APizzaModel> Pizzas { get; set; }
-        public List<OrderAPizzaModel> OrderAPizzaModel { get; set; }
+        // public List<OrderAPizzaModel> OrderAPizzaModel { get; set; }
         public long OrderId { get; set; }
+        public long UserId { get; set; }
         
         public long StoreId { get; set; }
         public Order()
@@ -26,6 +28,15 @@ namespace PizzaWorld.Domain.Models
         public Order(List<APizzaModel> pizzas)
         {
             Pizzas = pizzas;
+        }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(var p in Pizzas)
+            {
+                sb.AppendLine(p.ToString());
+            }
+            return sb.ToString();
         }
     }
 }

@@ -32,14 +32,5 @@ namespace PizzaWorld.Domain.Models
                 new Topping("olives")
             };
         }
-        // public override string ToString()
-        // {
-        //     var sb = new StringBuilder();
-        //     foreach (var t in toppings)
-        //     {
-        //         sb.AppendLine(t.Name);
-        //     }
-        //     return $"This is a {crust.Name} pizza:\nSize: {size.Name}\nToppings: {sb.ToString()}";
-        // }
     }
 }

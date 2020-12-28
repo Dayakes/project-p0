@@ -13,6 +13,7 @@ namespace PizzaWorld.Domain.Abstracts
         public double price { get; set; }
         public long PizzaId { get; set; }
         public long OrderId { get; set; }
+        public string Name { get; set; }
         protected APizzaModel()
         {
             // crust = new Crust();
@@ -25,11 +26,13 @@ namespace PizzaWorld.Domain.Abstracts
             AddSize();
             AddToppings();
             SetPrice();
+            AddName();
         }
         protected virtual void AddCrust(){}
         protected virtual void AddSize(){}
         protected virtual void AddToppings(){}
         protected virtual void SetPrice(){}
+        protected virtual void AddName(){}
         public void PrintAllPizzas()
         {
             System.Console.WriteLine("Meat Pizza \nVeggie Pizza\nFlatbread Pizza"); //this will require testing

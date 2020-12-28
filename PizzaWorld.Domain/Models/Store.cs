@@ -11,7 +11,6 @@ namespace PizzaWorld.Domain.Models
 
         public List<Order> Orders { get; set; }
         public long StoreId { get; set; }
-        // public long OrderId { get; set; }
         public Store()
         {
             Orders = new List<Order>();

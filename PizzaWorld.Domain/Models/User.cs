@@ -27,16 +27,5 @@ namespace PizzaWorld.Domain.Models
             Orders = new List<Order>();
             Name = name;
         }
-
-        // public override string ToString()
-        // {
-        //     var sb = new StringBuilder();
-
-        //     foreach (var p in SelectedPizzas)
-        //     {
-        //         sb.AppendLine(p.ToString());
-        //     }
-        //     return $"You have selected this store: {SelectedStore} and ordered these pizzas: {sb.ToString()}"; //string interpolation using the $
-        // }
     }
 }

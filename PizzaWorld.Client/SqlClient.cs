@@ -53,9 +53,6 @@ namespace PizzaWorld.Client
         }
         public void SaveOrder(Order o)
         {
-            //List<OrderAPizzaModel> oap = new List<OrderAPizzaModel>();
-            //i need to add both of the joins to be saved
-            
             _db.Orders.Add(o);
         }
         public void Save(Store store)
@@ -63,26 +60,10 @@ namespace PizzaWorld.Client
             _db.Add(store);
             _db.SaveChanges();
         }
-        // public void AttachOrder( Order o)
-        // {
-        //     _db.Attach(o);
-        // }
-
         public Store SelectStore()
         {
-            // do
-            // {
             string input = Console.ReadLine();
             return ReadOneStore(input);
-            // foreach (var s in _db.Stores)
-            // {
-            //     if (input == s.Name)
-            //     {
-            //         return ReadOne(input);
-            //     }
-            // }
-            // System.Console.WriteLine("No valid store selected, please try again");
-            // } while (true);
         }
     }
 }

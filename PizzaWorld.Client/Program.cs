@@ -31,7 +31,7 @@ namespace PizzaWorld.Client
         {
             System.Console.WriteLine("Are you a New (n) or Returning (r) user?");
             var input = System.Console.ReadLine();
-            if(input == "n")
+            if (input == "n")
             {
                 //enter new name
                 System.Console.WriteLine("Please enter your name with no capital letters:");
@@ -41,19 +41,36 @@ namespace PizzaWorld.Client
                 _sql.Update();
                 UserView(user);
             }
-            else if(input == "r")
+            else if (input == "r")
             {
                 //ask for name for login
-                System.Console.WriteLine("please enter your name for login:");
-                var name = System.Console.ReadLine();
-                User user = _sql.GetUser(name);
-                user.Orders = _sql.ReadOrders(user.UserId).ToList();
-
-                foreach(Order o in user.Orders)
+                bool NoUser = true;
+                do
                 {
-                    o.Pizzas = _sql.GetPizzas(o);
-                }
-                UserView(user);
+                    
+                    System.Console.WriteLine("please enter your name for login:");
+                    var name = System.Console.ReadLine();
+
+                    User user = _sql.GetUser(name);
+
+                    if (user != null)
+                    {
+                        NoUser = false;
+                        user.Orders = _sql.ReadOrders(user.UserId).ToList();
+
+                        foreach (Order o in user.Orders)
+                        {
+                            o.Pizzas = _sql.GetPizzas(o);
+                        }
+                        UserView(user);
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Invalid user name entered");
+                    }
+                } while (NoUser);
+
+
             }
         }
         static void UserView(User user)
@@ -67,7 +84,7 @@ namespace PizzaWorld.Client
                 {
                     //show their order history
                     System.Console.Clear();
-                    foreach(var o in user.Orders)
+                    foreach (var o in user.Orders)
                     {
                         System.Console.WriteLine("START OF ORDER");
                         System.Console.WriteLine(o.ToString());
@@ -85,7 +102,7 @@ namespace PizzaWorld.Client
 
                     SelectedStore.CreateOrder(SelectedPizzas);
                     user.Orders.Add(SelectedStore.Orders.Last());
-                    
+
                     _sql.SaveOrder(user.Orders.Last()); //save new order to context
                     _sql.Update();
 

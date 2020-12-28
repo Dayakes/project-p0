@@ -16,7 +16,6 @@ namespace PizzaWorld.Domain.Models
         */
         private GenericPizzaFactory _pizzaFactory = new GenericPizzaFactory();
         public List<APizzaModel> Pizzas { get; set; }
-        // public List<OrderAPizzaModel> OrderAPizzaModel { get; set; }
         public long OrderId { get; set; }
         public long UserId { get; set; }
         
@@ -32,6 +31,7 @@ namespace PizzaWorld.Domain.Models
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("You ordered these pizzas:");
             foreach(var p in Pizzas)
             {
                 sb.AppendLine(p.ToString());

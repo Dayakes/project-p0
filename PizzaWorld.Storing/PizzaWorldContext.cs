@@ -21,6 +21,9 @@ public class PizzaWorldContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<Store>().HasKey(s => s.StoreId);
+
+        builder.Entity<Order>().HasKey(o => o.OrderId);
+
         builder.Entity<User>().HasKey(u => u.UserId);
         builder.Entity<User>()
             .Property(u => u.Name)
@@ -28,10 +31,15 @@ public class PizzaWorldContext : DbContext
             .IsRequired();
 
         builder.Entity<APizzaModel>().HasKey(p => p.PizzaId);
-        builder.Entity<Crust>().HasKey(c => c.CrustId);
-        builder.Entity<Order>().HasKey(o => o.OrderId);
-        builder.Entity<Size>().HasKey(si => si.SizeId);
-        builder.Entity<Topping>().HasKey(t => t.ToppingId);
+        builder.Entity<APizzaModel>().OwnsOne(p => p.crust);
+        builder.Entity<APizzaModel>().OwnsOne(p => p.size);
+        builder.Entity<APizzaModel>().OwnsMany(p=>p.toppings);
+
+        // builder.Entity<Crust>().HasKey(c => c.CrustId);
+
+        // builder.Entity<Size>().HasKey(si => si.SizeId);
+
+        // builder.Entity<Topping>().HasKey(t => t.ToppingId);
 
         // MANY TO MANY ORDERS TO PIZZAS SETUP HERE
         // builder.Entity<OrderAPizzaModel>().HasKey(op => new { op.OrderId, op.PizzaId });

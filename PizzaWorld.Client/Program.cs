@@ -48,6 +48,7 @@ namespace PizzaWorld.Client
                 var name = System.Console.ReadLine();
                 User user = _sql.GetUser(name);
                 user.Orders = _sql.ReadOrders(user.UserId).ToList();
+
                 foreach(Order o in user.Orders)
                 {
                     o.Pizzas = _sql.GetPizzas(o);
@@ -65,9 +66,12 @@ namespace PizzaWorld.Client
                 if (select == "h")
                 {
                     //show their order history
+                    System.Console.Clear();
                     foreach(var o in user.Orders)
                     {
+                        System.Console.WriteLine("START OF ORDER");
                         System.Console.WriteLine(o.ToString());
+                        System.Console.WriteLine("END OF ORDER");
                     }
                 }
                 else if (select == "o")

@@ -31,9 +31,9 @@ public class PizzaWorldContext : DbContext
             .IsRequired();
 
         builder.Entity<APizzaModel>().HasKey(p => p.PizzaId);
-        builder.Entity<APizzaModel>().OwnsOne(p => p.crust);
-        builder.Entity<APizzaModel>().OwnsOne(p => p.size);
-        builder.Entity<APizzaModel>().OwnsMany(p=>p.toppings);
+        builder.Entity<APizzaModel>().OwnsOne(p => p.Crust);
+        builder.Entity<APizzaModel>().OwnsOne(p => p.Size);
+        builder.Entity<APizzaModel>().OwnsMany(p=>p.Toppings);
 
         SeedData(builder);
     }

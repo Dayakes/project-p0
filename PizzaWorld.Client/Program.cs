@@ -47,7 +47,7 @@ namespace PizzaWorld.Client
                 bool NoUser = true;
                 do
                 {
-                    
+
                     System.Console.WriteLine("please enter your name for login:");
                     var name = System.Console.ReadLine();
 
@@ -73,6 +73,11 @@ namespace PizzaWorld.Client
 
             }
         }
+        public void PrintAllPizzas()
+        {
+            // System.Console.WriteLine("Meat Pizza \nVeggie Pizza\nFlatbread Pizza"); //this will require testing
+            
+        }
         static void UserView(User user)
         {
             var stay = true;
@@ -82,7 +87,6 @@ namespace PizzaWorld.Client
                 var select = System.Console.ReadLine();
                 if (select == "h")
                 {
-                    //show their order history
                     System.Console.Clear();
                     foreach (var o in user.Orders)
                     {
@@ -103,7 +107,7 @@ namespace PizzaWorld.Client
                     SelectedStore.CreateOrder(SelectedPizzas);
                     user.Orders.Add(SelectedStore.Orders.Last());
 
-                    _sql.SaveOrder(user.Orders.Last()); //save new order to context
+                    _sql.SaveOrder(user.Orders.Last());
                     _sql.Update();
 
                     foreach (var p in SelectedPizzas)

@@ -6,22 +6,15 @@ namespace PizzaWorld.Domain.Abstracts
 {
     public class APizzaModel 
     {
-        public Crust crust {get; set;}
-        public Size size {get; set;}
-        public ICollection<Topping> toppings {get; set;}
-        // public List<OrderAPizzaModel> OrderAPizzaModels { get; set; }
+        public Crust Crust {get; set;}
+        public Size Size {get; set;}
+        public ICollection<Topping> Toppings {get; set;}
         public double price { get; set; }
         public long PizzaId { get; set; }
         public long OrderId { get; set; }
         public string Name { get; set; }
         protected APizzaModel()
         {
-            // crust = new Crust();
-            // size = new Size();
-            // toppings = new List<Topping>(){
-            //     new Topping(),
-            //     new Topping()
-            // };
             AddCrust();
             AddSize();
             AddToppings();
@@ -33,18 +26,15 @@ namespace PizzaWorld.Domain.Abstracts
         protected virtual void AddToppings(){}
         protected virtual void SetPrice(){}
         protected virtual void AddName(){}
-        public void PrintAllPizzas()
-        {
-            System.Console.WriteLine("Meat Pizza \nVeggie Pizza\nFlatbread Pizza"); //this will require testing
-        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
-            foreach (var t in toppings)
+            foreach (var t in Toppings)
             {
                 sb.AppendLine(t.Name);
             }
-            return $"This is a {Name} for ${price}:\nCrust: {crust.Name}\nSize: {size.Name}\nToppings: {sb.ToString()}";
+            return $"This is a {Name} for ${price}:\nCrust: {Crust.Name}\nSize: {Size.Name}\nToppings: {sb.ToString()}";
         }
 
         

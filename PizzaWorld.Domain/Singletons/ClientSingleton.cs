@@ -25,21 +25,17 @@ namespace PizzaWorld.Domain.Singletons
 
             }
         }
-        //using STORES
         public List<Store> Stores { get; set; }
         public List<APizzaModel> Pizzas { get; set; }
-        private ClientSingleton() //constructor
+        private ClientSingleton() 
         {
             Stores = new List<Store>();
-
         }
 
         public Store SelectStore()
         {
-            int.TryParse(Console.ReadLine(), out int input); // 0 or the actual selection
-            //Stores.FirstOrDefault(s => s == input); //unique property, custoemr entered correct information     wants us to use this
+            int.TryParse(Console.ReadLine(), out int input);
             return Stores.ElementAtOrDefault(input);
-            //Stores[input]; //exception
         }
         public List<APizzaModel> SelectPizzas()
         {
@@ -50,10 +46,10 @@ namespace PizzaWorld.Domain.Singletons
 
             do
             {
-                test.PrintAllPizzas();
+                PrintAllPizzas();
                 System.Console.WriteLine("Select a pizza, enter 9 to finish selecting");
                 int.TryParse(Console.ReadLine(), out int input);
-                //input--; may need to decrement input
+                //need to make a select size and select crust method that return a size and a crust respectively
                 switch (input)
                 {
                     case 1:
@@ -113,10 +109,5 @@ namespace PizzaWorld.Domain.Singletons
             }
 
         }
-        //private List<string> Toppings = GetToppings();
-        /*private List<string> GetToppings()
-        {
-            return 
-        }*/
     }
 }

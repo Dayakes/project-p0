@@ -11,10 +11,11 @@ namespace PizzaWorld.Domain.Models
             AddSize(size);
             AddCrust(crust);
             price = 13;
+            Name = "Meat Lovers Pizza";
         }
         public MeatPizza()
         {
-
+            Name = "Meat Lovers Pizza";
         }
         protected void AddCrust(Crust crust)
         {

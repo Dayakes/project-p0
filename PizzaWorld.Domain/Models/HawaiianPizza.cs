@@ -4,11 +4,16 @@ using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
 {
-    public class FlatbreadPizza : APizzaModel
+    public class HawaiianPizza : APizzaModel
     {
-        public FlatbreadPizza(Size size,Crust crust)
+        public HawaiianPizza(Size size,Crust crust)
         {
             price = 8;
+            Name = "Hawaiian Pizza";
+        }
+        public HawaiianPizza()
+        {
+            Name = "Hawaiian Pizza";
         }
 
         protected void AddCrust(Crust crust)

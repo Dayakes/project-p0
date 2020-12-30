@@ -37,6 +37,12 @@ namespace PizzaWorld.Domain.Singletons
             int.TryParse(Console.ReadLine(), out int input);
             return Stores.ElementAtOrDefault(input);
         }
+        public void PrintAllPizzas()
+        {
+            var meat = new MeatPizza();
+            var veggie = new VeggiePizza();
+            var flat = new HawaiianPizza();
+        }
         public List<APizzaModel> SelectPizzas()
         {
             bool Leave = true;
@@ -64,7 +70,7 @@ namespace PizzaWorld.Domain.Singletons
                         }
                     case 3:
                         {
-                            Pizzas.Add(_factory.Make<FlatbreadPizza>());
+                            Pizzas.Add(_factory.Make<HawaiianPizza>());
                             break;
                         }
                     case 9:

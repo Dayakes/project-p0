@@ -9,6 +9,7 @@ namespace PizzaWorld.Domain.Models
         public VeggiePizza(Size size, Crust crust)
         {
             price = 11;
+            Name = "Veggie Pizza";
         }
         protected void AddCrust(Crust crust)
         {

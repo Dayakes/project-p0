@@ -10,23 +10,21 @@ namespace PizzaWorld.Domain.Models
         {
             AddSize(size);
             AddCrust(crust);
-            price = 13;
+            ComputePrice();
             Name = "Meat Lovers Pizza";
         }
         public MeatPizza()
         {
             Name = "Meat Lovers Pizza";
         }
-        protected void AddCrust(Crust crust)
+        public void AddCrust(Crust crust)
         {
-            Crust = Crust;
+            Crust = crust;
         }
-
-        protected void AddSize(Size size)
+        public void AddSize(Size size)
         {
             Size = size;
         }
-
         protected override void AddToppings()
         {
             Toppings = new List<Topping>(){

@@ -27,6 +27,56 @@ namespace PizzaWorld.Client
                 System.Console.WriteLine(store.Name);
             }
         }
+        
+        
+        static void UserView(User user)
+        {
+            var stay = true;
+            do
+            {
+                System.Console.WriteLine("would you like to view your history (h), place an order (o), or exit the program (x)?");
+                var select = System.Console.ReadLine();
+                if (select == "h")
+                {
+                    System.Console.Clear();
+                    foreach (var o in user.Orders)
+                    {
+                        System.Console.WriteLine("::: START OF ORDER :::");
+                        System.Console.WriteLine(o.ToString());
+                        System.Console.WriteLine("\n::: END OF ORDER :::");
+                    }
+                }
+                else if (select == "o")
+                {
+                    PrintAllStoresWithEF();
+
+                    var SelectedStore = _sql.SelectStore();
+                    List<APizzaModel> SelectedPizzas = _client.SelectPizzas();
+
+                    SelectedPizzas.ToString();
+
+                    SelectedStore.CreateOrder(SelectedPizzas);
+                    user.Orders.Add(SelectedStore.Orders.Last());
+
+                    _sql.SaveOrder(user.Orders.Last());
+                    _sql.Update();
+
+                    foreach (var p in SelectedPizzas)
+                    {
+                        System.Console.WriteLine(p.ToString());
+                    }
+                }
+                else if (select == "x")
+                {
+                    stay = false;
+                    System.Console.WriteLine("Have a nice day!");
+                }
+                else
+                {
+                    System.Console.WriteLine("No valid selection made, please try again");
+                }
+            } while (stay);
+        }
         static void NewOrReturning()
         {
             System.Console.WriteLine("Are you a New (n) or Returning (r) user?");
@@ -72,59 +122,6 @@ namespace PizzaWorld.Client
 
 
             }
-        }
-        public void PrintAllPizzas()
-        {
-            // System.Console.WriteLine("Meat Pizza \nVeggie Pizza\nFlatbread Pizza"); //this will require testing
-            
-        }
-        static void UserView(User user)
-        {
-            var stay = true;
-            do
-            {
-                System.Console.WriteLine("would you like to view your history (h), place an order (o), or exit the program (x)?");
-                var select = System.Console.ReadLine();
-                if (select == "h")
-                {
-                    System.Console.Clear();
-                    foreach (var o in user.Orders)
-                    {
-                        System.Console.WriteLine("START OF ORDER");
-                        System.Console.WriteLine(o.ToString());
-                        System.Console.WriteLine("END OF ORDER");
-                    }
-                }
-                else if (select == "o")
-                {
-                    PrintAllStoresWithEF();
-
-                    var SelectedStore = _sql.SelectStore();
-                    List<APizzaModel> SelectedPizzas = _client.SelectPizzas();
-
-                    SelectedPizzas.ToString();
-
-                    SelectedStore.CreateOrder(SelectedPizzas);
-                    user.Orders.Add(SelectedStore.Orders.Last());
-
-                    _sql.SaveOrder(user.Orders.Last());
-                    _sql.Update();
-
-                    foreach (var p in SelectedPizzas)
-                    {
-                        System.Console.WriteLine(p.ToString());
-                    }
-                }
-                else if (select == "x")
-                {
-                    stay = false;
-                    System.Console.WriteLine("Have a nice day!");
-                }
-                else
-                {
-                    System.Console.WriteLine("No valid selection made, please try again");
-                }
-            } while (stay);
         }
     }
 }

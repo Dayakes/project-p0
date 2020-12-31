@@ -8,15 +8,21 @@ namespace PizzaWorld.Domain.Models
     {
         public VeggiePizza(Size size, Crust crust)
         {
-            price = 11;
+            Name = "Veggie Pizza";
+            Size = size;
+            Crust = crust;
+            ComputePrice();
+        }
+        public VeggiePizza()
+        {
             Name = "Veggie Pizza";
         }
-        protected void AddCrust(Crust crust)
+        public void AddCrust(Crust crust)
         {
             Crust = Crust;
         }
 
-        protected void AddSize(Size size)
+        public void AddSize(Size size)
         {
             Size = size;
         }

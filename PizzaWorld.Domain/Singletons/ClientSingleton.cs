@@ -40,8 +40,14 @@ namespace PizzaWorld.Domain.Singletons
         public void PrintAllPizzas()
         {
             var meat = new MeatPizza();
-            var veggie = new VeggiePizza();
+            var veg = new VeggiePizza();
             var flat = new HawaiianPizza();
+            // var cust = new CustomPizza();
+            System.Console.WriteLine("Here are the pizzas this store offers:");
+            System.Console.WriteLine(meat.Name);
+            System.Console.WriteLine(veg.Name);
+            System.Console.WriteLine(flat.Name);
+            // System.Console.WriteLine(cust.Name);
         }
         public List<APizzaModel> SelectPizzas()
         {
@@ -55,22 +61,38 @@ namespace PizzaWorld.Domain.Singletons
                 PrintAllPizzas();
                 System.Console.WriteLine("Select a pizza, enter 9 to finish selecting");
                 int.TryParse(Console.ReadLine(), out int input);
-                //need to make a select size and select crust method that return a size and a crust respectively
                 switch (input)
                 {
                     case 1:
                         {
-                            Pizzas.Add(_factory.Make<MeatPizza>());
+                            var pizza = _factory.Make<MeatPizza>();
+                            pizza.AddSize(SelectSize());
+                            pizza.AddCrust(SelectCrust());
+                            Pizzas.Add(pizza);
                             break;
                         }
                     case 2:
                         {
-                            Pizzas.Add(_factory.Make<VeggiePizza>());
+                            var pizza = _factory.Make<VeggiePizza>();
+                            pizza.AddSize(SelectSize());
+                            pizza.AddCrust(SelectCrust());
+                            Pizzas.Add(pizza);
                             break;
                         }
                     case 3:
                         {
-                            Pizzas.Add(_factory.Make<HawaiianPizza>());
+                            var pizza = _factory.Make<HawaiianPizza>();
+                            pizza.AddSize(SelectSize());
+                            pizza.AddCrust(SelectCrust());
+                            Pizzas.Add(pizza);
+                            break;
+                        }
+                    case 4:
+                        {
+                            // var pizza = _factory.Make<CustomPizza>();
+                            // pizza.AddSize(SelectSize());
+                            // pizza.AddCrust(SelectCrust());
+                            // Pizzas.Add(pizza);
                             break;
                         }
                     case 9:
@@ -91,29 +113,67 @@ namespace PizzaWorld.Domain.Singletons
             } while (Leave);
             return Pizzas;
         }
-
-        private void Save()
+        public Crust SelectCrust()
         {
-            var file = new StreamWriter(_path);
-            var xml = new XmlSerializer(typeof(List<Store>));
-
-            xml.Serialize(file, Stores);
+            while (true)
+            {
+                System.Console.WriteLine("what kind of crust would you like? \n1: Flatbread\n2: Regular\n3: Stuffed");
+                int.TryParse(System.Console.ReadLine(), out int input);
+                switch(input)
+                {
+                    case 1:
+                    {
+                        Crust crust = new Crust("Flatbread");
+                        return crust;
+                    }
+                    case 2:
+                    {
+                        Crust crust = new Crust("Regular");
+                        return crust;
+                    }
+                    case 3:
+                    {
+                        Crust crust = new Crust("Stuffed");
+                        return crust;
+                    }
+                    default :
+                    {
+                        System.Console.WriteLine("Invalid entry please try again");
+                        break;
+                    }
+                }
+            }
         }
-
-        private void Read()
+        public Size SelectSize()
         {
-            if (!File.Exists(_path))
+            while (true)
             {
-                var file = new StreamReader(_path);
-                var xml = new XmlSerializer(typeof(List<Store>));
-
-                Stores = xml.Deserialize(file) as List<Store>;
+                System.Console.WriteLine("what size would you like? \n1: Small\n2: Medium\n3: Large");
+                int.TryParse(System.Console.ReadLine(), out int input);
+                switch(input)
+                {
+                    case 1:
+                    {
+                        Size size = new Size("Small");
+                        return size;
+                    }
+                    case 2:
+                    {
+                        Size size = new Size("Medium");
+                        return size;
+                    }
+                    case 3:
+                    {
+                        Size size = new Size("Large");
+                        return size;
+                    }
+                    default :
+                    {
+                        System.Console.WriteLine("Invalid entry please try again");
+                        break;
+                    }
+                }
             }
-            else
-            {
-                Stores = new List<Store>();
-            }
-
         }
     }
 }

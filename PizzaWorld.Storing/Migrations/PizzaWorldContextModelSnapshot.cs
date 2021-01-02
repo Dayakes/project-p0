@@ -79,12 +79,12 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            StoreId = 637450057057614530L,
+                            StoreId = 637451924188397652L,
                             Name = "Dominos"
                         },
                         new
                         {
-                            StoreId = 637450057057648623L,
+                            StoreId = 637451924188430289L,
                             Name = "Pizza Hut"
                         });
                 });
@@ -119,9 +119,6 @@ namespace PizzaWorld.Storing.Migrations
                             b1.Property<long>("APizzaModelPizzaId")
                                 .HasColumnType("bigint");
 
-                            b1.Property<long>("CrustId")
-                                .HasColumnType("bigint");
-
                             b1.Property<string>("Name")
                                 .HasColumnType("nvarchar(max)");
 
@@ -147,9 +144,6 @@ namespace PizzaWorld.Storing.Migrations
                             b1.Property<double>("Price")
                                 .HasColumnType("float");
 
-                            b1.Property<long>("SizeId")
-                                .HasColumnType("bigint");
-
                             b1.HasKey("APizzaModelPizzaId");
 
                             b1.ToTable("Sizes");
@@ -163,15 +157,15 @@ namespace PizzaWorld.Storing.Migrations
                             b1.Property<long>("APizzaModelPizzaId")
                                 .HasColumnType("bigint");
 
-                            b1.Property<long>("ToppingId")
+                            b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
-                                .HasColumnType("bigint")
+                                .HasColumnType("int")
                                 .UseIdentityColumn();
 
                             b1.Property<string>("Name")
                                 .HasColumnType("nvarchar(max)");
 
-                            b1.HasKey("APizzaModelPizzaId", "ToppingId");
+                            b1.HasKey("APizzaModelPizzaId", "Id");
 
                             b1.ToTable("Topping");
 

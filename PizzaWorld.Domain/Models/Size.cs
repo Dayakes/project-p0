@@ -5,7 +5,6 @@ namespace PizzaWorld.Domain.Models
     public class Size
     {
         public string Name { get; set; }
-        public long SizeId { get; set; }
         public double Price { get; set; }
 
         public Size() { }

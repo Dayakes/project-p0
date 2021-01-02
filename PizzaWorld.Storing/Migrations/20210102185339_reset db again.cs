@@ -2,7 +2,7 @@
 
 namespace PizzaWorld.Storing.Migrations
 {
-    public partial class resetdatabase : Migration
+    public partial class resetdbagain : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,8 +64,9 @@ namespace PizzaWorld.Storing.Migrations
                 {
                     PizzaId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    price = table.Column<double>(type: "float", nullable: false),
-                    OrderId = table.Column<long>(type: "bigint", nullable: false)
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    OrderId = table.Column<long>(type: "bigint", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -84,7 +85,7 @@ namespace PizzaWorld.Storing.Migrations
                 {
                     APizzaModelPizzaId = table.Column<long>(type: "bigint", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CrustId = table.Column<long>(type: "bigint", nullable: false)
+                    Price = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -103,7 +104,7 @@ namespace PizzaWorld.Storing.Migrations
                 {
                     APizzaModelPizzaId = table.Column<long>(type: "bigint", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SizeId = table.Column<long>(type: "bigint", nullable: false)
+                    Price = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -120,14 +121,14 @@ namespace PizzaWorld.Storing.Migrations
                 name: "Topping",
                 columns: table => new
                 {
-                    ToppingId = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     APizzaModelPizzaId = table.Column<long>(type: "bigint", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Topping", x => new { x.APizzaModelPizzaId, x.ToppingId });
+                    table.PrimaryKey("PK_Topping", x => new { x.APizzaModelPizzaId, x.Id });
                     table.ForeignKey(
                         name: "FK_Topping_Pizzas_APizzaModelPizzaId",
                         column: x => x.APizzaModelPizzaId,
@@ -139,12 +140,12 @@ namespace PizzaWorld.Storing.Migrations
             migrationBuilder.InsertData(
                 table: "Stores",
                 columns: new[] { "StoreId", "Name" },
-                values: new object[] { 637447436221872366L, "Dominos" });
+                values: new object[] { 637451924188397652L, "Dominos" });
 
             migrationBuilder.InsertData(
                 table: "Stores",
                 columns: new[] { "StoreId", "Name" },
-                values: new object[] { 637447436221906507L, "Pizza Hut" });
+                values: new object[] { 637451924188430289L, "Pizza Hut" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_StoreId",

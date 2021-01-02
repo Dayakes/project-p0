@@ -32,9 +32,25 @@ public class PizzaWorldContext : DbContext
 
         builder.Entity<APizzaModel>().HasKey(p => p.PizzaId);
         builder.Entity<APizzaModel>().OwnsOne(p => p.Crust);
+            // {
+            //     c.WithOwner().HasForeignKey("PizzaId");
+            //     c.Property<long>("CrustId");
+            //     c.HasKey("CrustId");
+            // });
         builder.Entity<APizzaModel>().OwnsOne(p => p.Size);
-        builder.Entity<APizzaModel>().OwnsMany(p=>p.Toppings);
+            // {
+            //     s.WithOwner().HasForeignKey("PizzaId");
+            //     s.Property<long>("SizeId");
+            //     s.HasKey("SizeId");
+            // });
+        builder.Entity<APizzaModel>().OwnsMany(p => p.Toppings);
+            // {
+            //   t.WithOwner().HasForeignKey("PizzaId");
+            //   t.Property<long>("ToppingId");
+            //   t.HasKey("ToppingId");
+            // });
 
+        
         SeedData(builder);
     }
     private void SeedData(ModelBuilder builder)

@@ -19,7 +19,7 @@ namespace PizzaWorld.Domain.Models
         }
         public void AddCrust(Crust crust)
         {
-            Crust = Crust;
+            Crust = crust;
         }
 
         public void AddSize(Size size)

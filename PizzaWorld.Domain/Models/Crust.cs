@@ -2,10 +2,9 @@ using PizzaWorld.Domain.Abstracts;
 
 namespace PizzaWorld.Domain.Models
 {
-    public class Crust 
+    public class Crust
     {
         public string Name { get; set; }
-        public long CrustId { get; set; }
         public double Price { get; set; }
         public Crust()
         {

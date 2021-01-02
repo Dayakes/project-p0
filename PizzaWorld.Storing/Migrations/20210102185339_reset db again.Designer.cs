@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace PizzaWorld.Storing.Migrations
 {
     [DbContext(typeof(PizzaWorldContext))]
-    [Migration("20201228141342_reset database")]
-    partial class resetdatabase
+    [Migration("20210102185339_reset db again")]
+    partial class resetdbagain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,10 +26,13 @@ namespace PizzaWorld.Storing.Migrations
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("OrderId")
                         .HasColumnType("bigint");
 
-                    b.Property<double>("price")
+                    b.Property<double>("Price")
                         .HasColumnType("float");
 
                     b.HasKey("PizzaId");
@@ -78,12 +81,12 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            StoreId = 637447436221872366L,
+                            StoreId = 637451924188397652L,
                             Name = "Dominos"
                         },
                         new
                         {
-                            StoreId = 637447436221906507L,
+                            StoreId = 637451924188430289L,
                             Name = "Pizza Hut"
                         });
                 });
@@ -113,16 +116,16 @@ namespace PizzaWorld.Storing.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("PizzaWorld.Domain.Models.Crust", "crust", b1 =>
+                    b.OwnsOne("PizzaWorld.Domain.Models.Crust", "Crust", b1 =>
                         {
                             b1.Property<long>("APizzaModelPizzaId")
                                 .HasColumnType("bigint");
 
-                            b1.Property<long>("CrustId")
-                                .HasColumnType("bigint");
-
                             b1.Property<string>("Name")
                                 .HasColumnType("nvarchar(max)");
+
+                            b1.Property<double>("Price")
+                                .HasColumnType("float");
 
                             b1.HasKey("APizzaModelPizzaId");
 
@@ -132,7 +135,7 @@ namespace PizzaWorld.Storing.Migrations
                                 .HasForeignKey("APizzaModelPizzaId");
                         });
 
-                    b.OwnsOne("PizzaWorld.Domain.Models.Size", "size", b1 =>
+                    b.OwnsOne("PizzaWorld.Domain.Models.Size", "Size", b1 =>
                         {
                             b1.Property<long>("APizzaModelPizzaId")
                                 .HasColumnType("bigint");
@@ -140,8 +143,8 @@ namespace PizzaWorld.Storing.Migrations
                             b1.Property<string>("Name")
                                 .HasColumnType("nvarchar(max)");
 
-                            b1.Property<long>("SizeId")
-                                .HasColumnType("bigint");
+                            b1.Property<double>("Price")
+                                .HasColumnType("float");
 
                             b1.HasKey("APizzaModelPizzaId");
 
@@ -151,20 +154,20 @@ namespace PizzaWorld.Storing.Migrations
                                 .HasForeignKey("APizzaModelPizzaId");
                         });
 
-                    b.OwnsMany("PizzaWorld.Domain.Models.Topping", "toppings", b1 =>
+                    b.OwnsMany("PizzaWorld.Domain.Models.Topping", "Toppings", b1 =>
                         {
                             b1.Property<long>("APizzaModelPizzaId")
                                 .HasColumnType("bigint");
 
-                            b1.Property<long>("ToppingId")
+                            b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
-                                .HasColumnType("bigint")
+                                .HasColumnType("int")
                                 .UseIdentityColumn();
 
                             b1.Property<string>("Name")
                                 .HasColumnType("nvarchar(max)");
 
-                            b1.HasKey("APizzaModelPizzaId", "ToppingId");
+                            b1.HasKey("APizzaModelPizzaId", "Id");
 
                             b1.ToTable("Topping");
 
@@ -172,11 +175,11 @@ namespace PizzaWorld.Storing.Migrations
                                 .HasForeignKey("APizzaModelPizzaId");
                         });
 
-                    b.Navigation("crust");
+                    b.Navigation("Crust");
 
-                    b.Navigation("size");
+                    b.Navigation("Size");
 
-                    b.Navigation("toppings");
+                    b.Navigation("Toppings");
                 });
 
             modelBuilder.Entity("PizzaWorld.Domain.Models.Order", b =>

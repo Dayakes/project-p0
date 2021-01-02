@@ -41,9 +41,9 @@ namespace PizzaWorld.Client
                     System.Console.Clear();
                     foreach (var o in user.Orders)
                     {
-                        System.Console.WriteLine("::: START OF ORDER :::");
+                        System.Console.WriteLine("::: START OF ORDER :::\n");
                         System.Console.WriteLine(o.ToString());
-                        System.Console.WriteLine("\n::: END OF ORDER :::");
+                        System.Console.WriteLine("\n::: END OF ORDER :::\n");
                     }
                 }
                 else if (select == "o")

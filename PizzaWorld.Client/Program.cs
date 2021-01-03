@@ -12,7 +12,7 @@ namespace PizzaWorld.Client
         private static readonly SqlClient _sql = new SqlClient();
         static void Main(string[] args)
         {
-            NewOrReturning();
+            UserOrStore();
         }
 
         static IEnumerable<Store> GetAllStores()
@@ -27,8 +27,8 @@ namespace PizzaWorld.Client
                 System.Console.WriteLine(store.Name);
             }
         }
-        
-        
+
+
         static void UserView(User user)
         {
             var stay = true;
@@ -77,11 +77,31 @@ namespace PizzaWorld.Client
                 }
             } while (stay);
         }
-        static void NewOrReturning()
+        static void UserOrStore()
+        {
+            do
+            {
+                System.Console.WriteLine("Are you logging in as a User (u) or a Store (s)?");
+                var input = System.Console.ReadLine();
+                if (input.Equals("u"))
+                {
+                    NewOrReturningUser();
+                }
+                else if (input.Equals("s"))
+                {
+                    NewOrReturningStore();
+                }
+                else
+                {
+                    System.Console.WriteLine("Invalid entry please try again");
+                }
+            } while (true);
+        }
+        static void NewOrReturningUser()
         {
             System.Console.WriteLine("Are you a New (n) or Returning (r) user?");
             var input = System.Console.ReadLine();
-            if (input == "n")
+            if (input.Equals("n"))
             {
                 //enter new name
                 System.Console.WriteLine("Please enter your name with no capital letters:");
@@ -91,7 +111,7 @@ namespace PizzaWorld.Client
                 _sql.Update();
                 UserView(user);
             }
-            else if (input == "r")
+            else if (input.Equals("r"))
             {
                 //ask for name for login
                 bool NoUser = true;
@@ -106,7 +126,7 @@ namespace PizzaWorld.Client
                     if (user != null)
                     {
                         NoUser = false;
-                        user.Orders = _sql.ReadOrders(user.UserId).ToList();
+                        user.Orders = _sql.ReadUserOrders(user.UserId).ToList();
 
                         foreach (Order o in user.Orders)
                         {

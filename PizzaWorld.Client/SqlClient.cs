@@ -47,9 +47,13 @@ namespace PizzaWorld.Client
             _db.Users.Add(user);
             _db.SaveChanges();
         }
-        public IEnumerable<Order> ReadOrders(long id) //i need to get the orders based on the users id
+        public IEnumerable<Order> ReadUserOrders(long id) //i need to get the orders based on the users id
         {
             return _db.Orders.Where(o => o.UserId == id);
+        }
+        public IEnumerable<Order> ReadStoreOrders(long id) //i need to get the orders based on the users id
+        {
+            return _db.Orders.Where(o => o.StoreId == id);
         }
         public void SaveOrder(Order o)
         {

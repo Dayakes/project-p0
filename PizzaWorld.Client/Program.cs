@@ -36,24 +36,22 @@ namespace PizzaWorld.Client
             {
                 System.Console.WriteLine("would you like to view your history (h), place an order (o), or exit the program (x)?");
                 var select = System.Console.ReadLine();
-                if (select == "h")
+                if (select.Equals("h"))
                 {
                     System.Console.Clear();
                     foreach (var o in user.Orders)
                     {
-                        System.Console.WriteLine("::: START OF ORDER :::\n");
                         System.Console.WriteLine(o.ToString());
-                        System.Console.WriteLine("\n::: END OF ORDER :::\n");
                     }
                 }
-                else if (select == "o")
+                else if (select.Equals("o"))
                 {
                     PrintAllStoresWithEF();
 
                     var SelectedStore = _sql.SelectStore();
                     List<APizzaModel> SelectedPizzas = _client.SelectPizzas();
 
-                    SelectedPizzas.ToString();
+                    System.Console.Clear();
 
                     SelectedStore.CreateOrder(SelectedPizzas);
                     user.Orders.Add(SelectedStore.Orders.Last());
@@ -61,12 +59,14 @@ namespace PizzaWorld.Client
                     _sql.SaveOrder(user.Orders.Last());
                     _sql.Update();
 
+                    System.Console.WriteLine("Here are all the pizzas you ordered::");
                     foreach (var p in SelectedPizzas)
                     {
                         System.Console.WriteLine(p.ToString());
                     }
+                    System.Console.WriteLine("::: END OF ORDER :::");
                 }
-                else if (select == "x")
+                else if (select.Equals("x"))
                 {
                     stay = false;
                     System.Console.WriteLine("Have a nice day!");
@@ -79,9 +79,10 @@ namespace PizzaWorld.Client
         }
         static void UserOrStore()
         {
+            bool login = true;
             do
             {
-                System.Console.WriteLine("Are you logging in as a User (u) or a Store (s)?");
+                System.Console.WriteLine("Are you logging in as a User (u) or a Store (s) or would you like to quit (q)?");
                 var input = System.Console.ReadLine();
                 if (input.Equals("u"))
                 {
@@ -89,13 +90,17 @@ namespace PizzaWorld.Client
                 }
                 else if (input.Equals("s"))
                 {
-                    NewOrReturningStore();
+                    StoreView();
+                }
+                else if(input.Equals("q"))
+                {
+                    login = false;
                 }
                 else
                 {
                     System.Console.WriteLine("Invalid entry please try again");
                 }
-            } while (true);
+            } while (login);
         }
         static void NewOrReturningUser()
         {
@@ -142,6 +147,26 @@ namespace PizzaWorld.Client
 
 
             }
+        }
+         static void StoreView()
+        {
+            System.Console.WriteLine("Which store would you like to check?");
+            PrintAllStoresWithEF();
+            Store store = _sql.SelectStore();
+            store.Orders = _sql.ReadStoreOrders(store.StoreId).ToList<Order>();
+            double total = 0;
+
+            foreach(Order o in store.Orders)
+            {
+                o.ComputePrice();
+                System.Console.WriteLine(o.ToString());
+                total = total + o.TotalPrice;
+            }
+            
+            System.Console.WriteLine($"Total price of all orders: {total}");
+            total = 0;
+            
+            
         }
     }
 }

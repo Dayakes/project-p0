@@ -46,5 +46,10 @@ public class PizzaWorldContext : DbContext
                 new Store(){Name = "Pizza Hut",StoreId = System.DateTime.Now.Ticks}
             }
         );
+        builder.Entity<User>().HasData(new List<User>
+        {
+            new User(){Name = "Darren",UserId = System.DateTime.Now.Ticks},
+            new User(){Name = "Fred",UserId = System.DateTime.Now.Ticks}
+        });
     }
 }

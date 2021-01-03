@@ -30,13 +30,17 @@ namespace PizzaWorld.Client
         {
             return _db.Stores.FirstOrDefault(s => s.Name == name);
         }
-        public User ReadOneUser(string name)
+        public Store GetStore(string name)
         {
-            return _db.Users.FirstOrDefault(u => u.Name == name);
+            return _db.Stores.Include(store => store.Orders).ThenInclude(order => order.Pizzas).ThenInclude(pizza => pizza.Crust).
+            Include(store => store.Orders).ThenInclude(order => order.Pizzas).ThenInclude(pizza => pizza.Size).
+            FirstOrDefault(s => s.Name == name);
         }
         public User GetUser(string name)
         {
-            return _db.Users.FirstOrDefault(u => u.Name == name);
+            return _db.Users.Include(user => user.Orders).ThenInclude(order => order.Pizzas).ThenInclude(pizza => pizza.Crust).
+            Include(user => user.Orders).ThenInclude(order => order.Pizzas).ThenInclude(pizza => pizza.Size).
+            FirstOrDefault(u => u.Name == name);
         }
         public List<APizzaModel> GetPizzas(Order o)
         {
@@ -47,16 +51,17 @@ namespace PizzaWorld.Client
             _db.Users.Add(user);
             _db.SaveChanges();
         }
-        public IEnumerable<Order> ReadUserOrders(long id) //i need to get the orders based on the users id
+        public IEnumerable<Order> ReadUserOrders(long id) 
         {
             return _db.Orders.Where(o => o.UserId == id);
         }
-        public IEnumerable<Order> ReadStoreOrders(long id) //i need to get the orders based on the users id
+        public IEnumerable<Order> ReadStoreOrders(long id) 
         {
             return _db.Orders.Where(o => o.StoreId == id);
         }
         public void SaveOrder(Order o)
         {
+            o.ComputePrice();
             _db.Orders.Add(o);
         }
         public void Save(Store store)
@@ -67,7 +72,7 @@ namespace PizzaWorld.Client
         public Store SelectStore()
         {
             string input = Console.ReadLine();
-            return ReadOneStore(input);
+            return GetStore(input);
         }
     }
 }

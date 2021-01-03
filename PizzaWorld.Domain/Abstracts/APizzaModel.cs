@@ -38,7 +38,7 @@ namespace PizzaWorld.Domain.Abstracts
             }
             return $"This is a {Name} for ${Price}:\nCrust: {Crust.Name}\nSize: {Size.Name}\nToppings: {sb.ToString()}";
         }
-        protected virtual void ComputePrice()
+        public virtual void ComputePrice()
         {
             Price = Crust.Price + Size.Price;
         }

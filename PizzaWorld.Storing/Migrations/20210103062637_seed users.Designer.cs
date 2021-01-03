@@ -2,14 +2,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace PizzaWorld.Storing.Migrations
 {
     [DbContext(typeof(PizzaWorldContext))]
-    partial class PizzaWorldContextModelSnapshot : ModelSnapshot
+    [Migration("20210103062637_seed users")]
+    partial class seedusers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,12 +84,12 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            StoreId = 637452346810403873L,
+                            StoreId = 637452339972904419L,
                             Name = "Dominos"
                         },
                         new
                         {
-                            StoreId = 637452346810437163L,
+                            StoreId = 637452339972935560L,
                             Name = "Pizza Hut"
                         });
                 });
@@ -111,12 +113,12 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = 637452346810447383L,
+                            UserId = 637452339972944016L,
                             Name = "Darren"
                         },
                         new
                         {
-                            UserId = 637452346810447648L,
+                            UserId = 637452339972944264L,
                             Name = "Fred"
                         });
                 });

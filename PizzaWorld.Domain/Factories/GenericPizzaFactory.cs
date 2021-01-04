@@ -1,4 +1,5 @@
 using PizzaWorld.Domain.Abstracts;
+using PizzaWorld.Domain.Models;
 
 namespace PizzaWorld.Domain.Factories
 {

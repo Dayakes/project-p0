@@ -15,23 +15,12 @@ namespace PizzaWorld.Domain.Abstracts
         public string Name { get; set; }
         protected APizzaModel()
         {
-            AddCrust();
-            AddSize();
-            AddToppings();
-            SetPrice();
-            AddName();
+
         }
-        protected virtual void AddCrust() { }
-        protected virtual void AddSize() { }
-        protected virtual void AddToppings() { }
-        protected virtual void SetPrice() { }
-        protected virtual void AddName() { }
-
-
         public override string ToString()
         {
-            ComputePrice();
             var sb = new StringBuilder();
+            
             foreach (var t in Toppings)
             {
                 sb.AppendLine(t.Name);

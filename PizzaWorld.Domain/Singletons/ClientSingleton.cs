@@ -65,25 +65,25 @@ namespace PizzaWorld.Domain.Singletons
                 {
                     case 1:
                         {
-                            var pizza = _factory.Make<MeatPizza>();
-                            pizza.AddSize(SelectSize());
-                            pizza.AddCrust(SelectCrust());
+                            var size = SelectSize();
+                            var crust = SelectCrust();
+                            var pizza = new MeatPizza(size,crust);
                             Pizzas.Add(pizza);
                             break;
                         }
                     case 2:
                         {
-                            var pizza = _factory.Make<VeggiePizza>();
-                            pizza.AddSize(SelectSize());
-                            pizza.AddCrust(SelectCrust());
+                            var size = SelectSize();
+                            var crust = SelectCrust();
+                            var pizza = new VeggiePizza(size,crust);
                             Pizzas.Add(pizza);
                             break;
                         }
                     case 3:
                         {
-                            var pizza = _factory.Make<HawaiianPizza>();
-                            pizza.AddSize(SelectSize());
-                            pizza.AddCrust(SelectCrust());
+                            var size = SelectSize();
+                            var crust = SelectCrust();
+                            var pizza = new HawaiianPizza(size,crust);
                             Pizzas.Add(pizza);
                             break;
                         }

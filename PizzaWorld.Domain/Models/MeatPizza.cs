@@ -8,14 +8,18 @@ namespace PizzaWorld.Domain.Models
     {
         public MeatPizza(Size size,Crust crust)
         {
-            AddSize(size);
+            AddName("Meat Lovers Pizza");
             AddCrust(crust);
+            AddSize(size);
+            AddToppings();
             ComputePrice();
-            Name = "Meat Lovers Pizza";
         }
         public MeatPizza()
         {
             Name = "Meat Lovers Pizza";
+            Crust = new Crust();
+            Size = new Size();
+            Toppings = new List<Topping>();
         }
         public void AddCrust(Crust crust)
         {
@@ -25,7 +29,7 @@ namespace PizzaWorld.Domain.Models
         {
             Size = size;
         }
-        protected override void AddToppings()
+        protected void AddToppings()
         {
             Toppings = new List<Topping>(){
             new Topping("cheese"),
@@ -34,9 +38,9 @@ namespace PizzaWorld.Domain.Models
             new Topping("sausage")
           };
         }
-        protected override void AddName()
+        protected void AddName(string name)
         {
-            Name = "Meat Pizza";
+            Name = name;
         }
     }
 }

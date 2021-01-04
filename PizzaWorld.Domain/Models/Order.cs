@@ -18,7 +18,6 @@ namespace PizzaWorld.Domain.Models
         public List<APizzaModel> Pizzas { get; set; }
         public long OrderId { get; set; }
         public long UserId { get; set; }
-        
         public long StoreId { get; set; }
         public double TotalPrice { get; set; }
         public Order()

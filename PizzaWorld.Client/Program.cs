@@ -31,10 +31,11 @@ namespace PizzaWorld.Client
 
         static void UserView(User user)
         {
+            System.Console.Clear();
             var stay = true;
             do
             {
-                System.Console.WriteLine("would you like to view your history (h), place an order (o), or exit the program (x)?");
+                System.Console.WriteLine("would you like to view your history (h), place an order (o), or logout (x)?");
                 var select = System.Console.ReadLine();
                 if (select.Equals("h"))
                 {
@@ -45,7 +46,8 @@ namespace PizzaWorld.Client
                     }
                 }
                 else if (select.Equals("o"))
-                {
+                {   
+                    System.Console.WriteLine("Please select a store by typing its name :");
                     PrintAllStoresWithEF();
 
                     var SelectedStore = _sql.SelectStore();
@@ -108,7 +110,6 @@ namespace PizzaWorld.Client
             var input = System.Console.ReadLine();
             if (input.Equals("n"))
             {
-                //enter new name
                 System.Console.WriteLine("Please enter your name with no capital letters:");
                 var name = System.Console.ReadLine().ToLower();
                 User user = new User(name);
@@ -118,11 +119,9 @@ namespace PizzaWorld.Client
             }
             else if (input.Equals("r"))
             {
-                //ask for name for login
                 bool NoUser = true;
                 do
                 {
-
                     System.Console.WriteLine("please enter your name for login:");
                     var name = System.Console.ReadLine();
 
@@ -131,12 +130,6 @@ namespace PizzaWorld.Client
                     if (user != null)
                     {
                         NoUser = false;
-                        user.Orders = _sql.ReadUserOrders(user.UserId).ToList();
-
-                        foreach (Order o in user.Orders)
-                        {
-                            o.Pizzas = _sql.GetPizzas(o);
-                        }
                         UserView(user);
                     }
                     else
@@ -144,12 +137,11 @@ namespace PizzaWorld.Client
                         System.Console.WriteLine("Invalid user name entered");
                     }
                 } while (NoUser);
-
-
             }
         }
          static void StoreView()
         {
+            System.Console.Clear();
             System.Console.WriteLine("Which store would you like to check?");
             PrintAllStoresWithEF();
             Store store = _sql.SelectStore();

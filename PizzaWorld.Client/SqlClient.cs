@@ -34,12 +34,14 @@ namespace PizzaWorld.Client
         {
             return _db.Stores.Include(store => store.Orders).ThenInclude(order => order.Pizzas).ThenInclude(pizza => pizza.Crust).
             Include(store => store.Orders).ThenInclude(order => order.Pizzas).ThenInclude(pizza => pizza.Size).
+            Include(store => store.Orders).ThenInclude(Order => Order.Pizzas).ThenInclude(pizza => pizza.Toppings).
             FirstOrDefault(s => s.Name == name);
         }
         public User GetUser(string name)
         {
             return _db.Users.Include(user => user.Orders).ThenInclude(order => order.Pizzas).ThenInclude(pizza => pizza.Crust).
             Include(user => user.Orders).ThenInclude(order => order.Pizzas).ThenInclude(pizza => pizza.Size).
+            Include(user => user.Orders).ThenInclude(Order => Order.Pizzas).ThenInclude(pizza => pizza.Toppings).
             FirstOrDefault(u => u.Name == name);
         }
         public List<APizzaModel> GetPizzas(Order o)
@@ -51,11 +53,11 @@ namespace PizzaWorld.Client
             _db.Users.Add(user);
             _db.SaveChanges();
         }
-        public IEnumerable<Order> ReadUserOrders(long id) 
+        public IEnumerable<Order> ReadUserOrders(long id)
         {
             return _db.Orders.Where(o => o.UserId == id);
         }
-        public IEnumerable<Order> ReadStoreOrders(long id) 
+        public IEnumerable<Order> ReadStoreOrders(long id)
         {
             return _db.Orders.Where(o => o.StoreId == id);
         }

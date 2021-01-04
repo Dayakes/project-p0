@@ -18,6 +18,7 @@ namespace PizzaWorld.Domain.Models
         public void CreateOrder(List<APizzaModel> Pizzas)
         {
             Orders.Add(new Order(Pizzas));
+            
         }
         bool DeleteOrder(Order order)
         {

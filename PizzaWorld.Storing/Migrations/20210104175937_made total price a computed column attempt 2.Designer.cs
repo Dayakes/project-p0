@@ -2,14 +2,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace PizzaWorld.Storing.Migrations
 {
     [DbContext(typeof(PizzaWorldContext))]
-    partial class PizzaWorldContextModelSnapshot : ModelSnapshot
+    [Migration("20210104175937_made total price a computed column attempt 2")]
+    partial class madetotalpriceacomputedcolumnattempt2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,12 +84,12 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            StoreId = 637453627760326442L,
+                            StoreId = 637453619766475589L,
                             Name = "Dominos"
                         },
                         new
                         {
-                            StoreId = 637453627760361458L,
+                            StoreId = 637453619766506798L,
                             Name = "Pizza Hut"
                         });
                 });
@@ -111,12 +113,12 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = 637453627760373302L,
+                            UserId = 637453619766516011L,
                             Name = "Darren"
                         },
                         new
                         {
-                            UserId = 637453627760373640L,
+                            UserId = 637453619766516281L,
                             Name = "Fred"
                         });
                 });

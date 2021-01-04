@@ -7,7 +7,11 @@ namespace PizzaWorld.Domain.Models
         public string Name { get; set; }
         public double Price { get; set; }
 
-        public Size() { }
+        public Size() 
+        {
+            Name = "";
+            Price = 0;
+        }
         public Size(string name)
         {
             Name = name;

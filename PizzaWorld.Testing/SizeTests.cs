@@ -12,7 +12,7 @@ namespace PizzaWorld.Testing
     public class SizeTests
     {
         [Fact]
-        private void Test_PizzaExists()
+        private void Test_SizeExists()
         {
             var sut = new Size();
 
@@ -21,6 +21,6 @@ namespace PizzaWorld.Testing
             Assert.IsType<Size>(actual);
             Assert.NotNull(actual);
         }
-        //private void Test_
+        
     }
 }

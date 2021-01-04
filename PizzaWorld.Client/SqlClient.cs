@@ -63,7 +63,6 @@ namespace PizzaWorld.Client
         }
         public void SaveOrder(Order o)
         {
-            o.ComputePrice();
             _db.Orders.Add(o);
         }
         public void Save(Store store)

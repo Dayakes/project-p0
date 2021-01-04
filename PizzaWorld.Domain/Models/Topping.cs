@@ -11,7 +11,10 @@ namespace PizzaWorld.Domain.Models
     {
         public string Name { get; set; }
 
-        public Topping() { }
+        public Topping() 
+        {
+            Name = "";
+        }
         public Topping(string name)
         {
             Name = name;

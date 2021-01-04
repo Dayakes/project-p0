@@ -11,7 +11,7 @@ namespace PizzaWorld.Domain.Singletons
 {
     public class ClientSingleton
     {
-        private readonly string _path = @"//PizzaWorld.Client//pizzaworld.xml"; //waiting for DB
+        // private readonly string _path = @"//PizzaWorld.Client//pizzaworld.xml"; //waiting for DB
         private static ClientSingleton _instance;
         public static ClientSingleton Instance
         {

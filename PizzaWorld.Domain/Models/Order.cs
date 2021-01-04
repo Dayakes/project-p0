@@ -19,7 +19,22 @@ namespace PizzaWorld.Domain.Models
         public long OrderId { get; set; }
         public long UserId { get; set; }
         public long StoreId { get; set; }
-        public double TotalPrice { get; set; }
+        public double TotalPrice
+        {
+            get
+            {
+                double calc = 0;
+                foreach (APizzaModel pizza in Pizzas)
+                {
+                    calc = calc + pizza.Price;
+                }
+                return calc;
+            }
+            set
+            {
+                ComputePrice();
+            }
+        }
         public Order()
         {
             Pizzas = new List<APizzaModel>();
@@ -27,27 +42,29 @@ namespace PizzaWorld.Domain.Models
         public Order(List<APizzaModel> pizzas)
         {
             Pizzas = pizzas;
-            ComputePrice();
+            
         }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("::: START OF ORDER :::\n");
             sb.AppendLine("You ordered these pizzas:");
-            foreach(var p in Pizzas)
+            foreach (var p in Pizzas)
             {
                 sb.AppendLine(p.ToString());
             }
+            sb.AppendLine($"Total price for this order: {TotalPrice}");
             sb.AppendLine("::: END OF ORDER :::\n");
             return sb.ToString();
         }
-        public void ComputePrice()
+        public double ComputePrice()
         {
-            TotalPrice = 0;
-            foreach(APizzaModel pizza in Pizzas)
+            double calc = 0;
+            foreach (APizzaModel pizza in Pizzas)
             {
-                TotalPrice = TotalPrice + pizza.Price;
+                calc = calc + pizza.Price;
             }
+            return calc;
         }
     }
 }

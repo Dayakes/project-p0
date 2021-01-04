@@ -8,6 +8,8 @@ namespace PizzaWorld.Domain.Models
         public double Price { get; set; }
         public Crust()
         {
+            Name = "";
+            Price = 0;
         }
         public Crust(string name)
         {

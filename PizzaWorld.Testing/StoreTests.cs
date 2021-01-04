@@ -15,5 +15,15 @@ namespace PizzaWorld.Testing
             Assert.IsType<Store>(actual);
             Assert.NotNull(actual);
         }
+        [Fact]
+        private void Test_HasOrders()
+        {
+            var sut = new Store();
+
+            var actual = sut;
+
+            Assert.IsType<Order>(actual.Orders);
+            
+        }
     }
 }

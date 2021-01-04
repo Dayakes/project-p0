@@ -27,8 +27,7 @@ namespace PizzaWorld.Testing
 
             var actual = sut;
 
-            //Assert.IsType<double>(actual.Price);
-            //Assert.NotNull(actual.Name);
+            Assert.NotNull(actual.Name);
         }
     }
 }

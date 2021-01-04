@@ -16,5 +16,14 @@ namespace PizzaWorld.Testing
             Assert.IsType<MeatPizza>(actual);
             Assert.NotNull(actual);
         }
+        [Fact]
+        private void Test_HasSize()
+        {
+            var sut = new MeatPizza();
+
+            var actual = sut;
+
+            Assert.IsType<MeatPizza>(actual.Size);
+        }
     }
 }

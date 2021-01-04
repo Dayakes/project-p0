@@ -2,14 +2,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace PizzaWorld.Storing.Migrations
 {
     [DbContext(typeof(PizzaWorldContext))]
-    partial class PizzaWorldContextModelSnapshot : ModelSnapshot
+    [Migration("20210104175803_made total price a computed column")]
+    partial class madetotalpriceacomputedcolumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,9 +52,6 @@ namespace PizzaWorld.Storing.Migrations
                     b.Property<long>("StoreId")
                         .HasColumnType("bigint");
 
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
-
                     b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
@@ -82,12 +81,12 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            StoreId = 637453627760326442L,
+                            StoreId = 637453618826305599L,
                             Name = "Dominos"
                         },
                         new
                         {
-                            StoreId = 637453627760361458L,
+                            StoreId = 637453618826337408L,
                             Name = "Pizza Hut"
                         });
                 });
@@ -111,12 +110,12 @@ namespace PizzaWorld.Storing.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = 637453627760373302L,
+                            UserId = 637453618826350921L,
                             Name = "Darren"
                         },
                         new
                         {
-                            UserId = 637453627760373640L,
+                            UserId = 637453618826351224L,
                             Name = "Fred"
                         });
                 });

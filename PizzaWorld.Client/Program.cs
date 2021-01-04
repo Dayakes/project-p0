@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using PizzaWorld.Domain.Abstracts;
 using PizzaWorld.Domain.Models;
 using PizzaWorld.Domain.Singletons;
@@ -54,7 +55,7 @@ namespace PizzaWorld.Client
                     List<APizzaModel> SelectedPizzas = _client.SelectPizzas();
 
                     System.Console.Clear();
-
+                    
                     SelectedStore.CreateOrder(SelectedPizzas);
                     user.Orders.Add(SelectedStore.Orders.Last());
 
@@ -62,11 +63,7 @@ namespace PizzaWorld.Client
                     _sql.Update();
 
                     System.Console.WriteLine("Here are all the pizzas you ordered::");
-                    foreach (var p in SelectedPizzas)
-                    {
-                        System.Console.WriteLine(p.ToString());
-                    }
-                    System.Console.WriteLine("::: END OF ORDER :::");
+                    System.Console.WriteLine(user.Orders.Last().ToString());
                 }
                 else if (select.Equals("x"))
                 {
@@ -150,7 +147,7 @@ namespace PizzaWorld.Client
 
             foreach(Order o in store.Orders)
             {
-                o.ComputePrice();
+                //o.ComputePrice();
                 System.Console.WriteLine(o.ToString());
                 total = total + o.TotalPrice;
             }
